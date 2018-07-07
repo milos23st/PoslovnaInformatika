@@ -3,9 +3,13 @@ package com.poslovna.domain;
 import java.time.Year;
 import java.util.List;
 
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
+
+@Entity
 public class PoslovnaGodina {
 	
 	@Id
@@ -13,8 +17,44 @@ public class PoslovnaGodina {
 	private Long id;
 	
 	private Year godina;
+	
 	private boolean zakljucena;
 	
-	private List<IzlaznaFaktura> fakture;
+	@ManyToOne
+    private Preduzece preduzece;
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public Year getGodina() {
+		return godina;
+	}
+
+	public void setGodina(Year godina) {
+		this.godina = godina;
+	}
+
+	public boolean isZakljucena() {
+		return zakljucena;
+	}
+
+	public void setZakljucena(boolean zakljucena) {
+		this.zakljucena = zakljucena;
+	}
+
+	public Preduzece getPreduzece() {
+		return preduzece;
+	}
+
+	public void setPreduzece(Preduzece preduzece) {
+		this.preduzece = preduzece;
+	}
+	
+	
 
 }

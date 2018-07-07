@@ -1,8 +1,11 @@
 package com.poslovna.domain;
 
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+@Entity
 public class StavkeFakture {
 	
 	@Id
@@ -13,6 +16,8 @@ public class StavkeFakture {
 	
 	private double rabat;
 	
+	private double rabatProcenat;
+	
 	private double jedinicnaCena;
 	
 	private double stopaPDV;
@@ -22,6 +27,9 @@ public class StavkeFakture {
 	private double iznosPDV;
 	
 	private double ukupanIznos;
+	
+	@ManyToOne
+    private Proizvod proizvod;
 
 	public Long getId() {
 		return id;
@@ -85,6 +93,22 @@ public class StavkeFakture {
 
 	public void setUkupanIznos(double ukupanIznos) {
 		this.ukupanIznos = ukupanIznos;
+	}
+
+	public double getRabatProcenat() {
+		return rabatProcenat;
+	}
+
+	public void setRabatProcenat(double rabatProcenat) {
+		this.rabatProcenat = rabatProcenat;
+	}
+
+	public Proizvod getProizvod() {
+		return proizvod;
+	}
+
+	public void setProizvod(Proizvod proizvod) {
+		this.proizvod = proizvod;
 	}
 	
 	

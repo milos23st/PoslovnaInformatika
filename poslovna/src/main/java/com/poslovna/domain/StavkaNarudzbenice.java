@@ -2,23 +2,20 @@ package com.poslovna.domain;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 
 @Entity
-public class StavkaCenovnika {
+public class StavkaNarudzbenice {
 	
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
-	private double cena;
-	
-	@ManyToOne
-    private Cenovnik cenovnik;
-	
+	 
+	private double kolicina;
+	 	 
 	@ManyToOne
 	private Proizvod proizvod;
 
@@ -30,20 +27,12 @@ public class StavkaCenovnika {
 		this.id = id;
 	}
 
-	public double getCena() {
-		return cena;
+	public double getKolicina() {
+		return kolicina;
 	}
 
-	public void setCena(double cena) {
-		this.cena = cena;
-	}
-
-	public Cenovnik getCenovnik() {
-		return cenovnik;
-	}
-
-	public void setCenovnik(Cenovnik cenovnik) {
-		this.cenovnik = cenovnik;
+	public void setKolicina(double kolicina) {
+		this.kolicina = kolicina;
 	}
 
 	public Proizvod getProizvod() {
@@ -53,11 +42,7 @@ public class StavkaCenovnika {
 	public void setProizvod(Proizvod proizvod) {
 		this.proizvod = proizvod;
 	}
-	
-	
-	
-	
-	
-	
+	 
+	 
 
 }

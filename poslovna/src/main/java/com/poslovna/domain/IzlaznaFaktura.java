@@ -1,31 +1,67 @@
 package com.poslovna.domain;
 
 import java.util.Date;
+
 import java.util.List;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
+@Entity
 public class IzlaznaFaktura {
 	
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	private Date datumFakture;	
+    private Long broj;
+	
+	@Temporal(TemporalType.DATE)
+	private Date datumFakture;
+	
+	@Temporal(TemporalType.DATE)
 	private Date datumValute;
+	
+	private double ukupanRabat;	
+	
 	private Date datumObracuna;
 	
-	private double ukupnoRobaIUsluge;
-	private double ukupanRabat;	
+	private double bezPDV;
+	
 	private double ukupanPorez;
+	
+	private double ukupnoRobaIUsluge;
+
 	private double iznosFakture;
 	
 	private String uplataNaRacun;
+	
 	private String pozivNaBroj;
+	
 	private StatusFakture statusFakture;
 	
+	@OneToMany
 	private List<StavkeFakture> stavkeFakture;
+	
+	@ManyToOne
+	private PoslovniPartner poslovniPartner;
+	
+	@ManyToOne
+	private PoslovnaGodina poslovnaGodina;
+	
+	@ManyToOne
+    private Narudzbenica narudzbenica;
+
+    @ManyToOne
+    private Preduzece preduzece;
 	
 	private enum StatusFakture {
 		Obracunata,
@@ -120,8 +156,62 @@ public class IzlaznaFaktura {
 	public void setStatusFakture(StatusFakture statusFakture) {
 		this.statusFakture = statusFakture;
 	}
-	
-	
+
+	public Long getBroj() {
+		return broj;
+	}
+
+	public void setBroj(Long broj) {
+		this.broj = broj;
+	}
+
+	public double getBezPDV() {
+		return bezPDV;
+	}
+
+	public void setBezPDV(double bezPDV) {
+		this.bezPDV = bezPDV;
+	}
+
+	public List<StavkeFakture> getStavkeFakture() {
+		return stavkeFakture;
+	}
+
+	public void setStavkeFakture(List<StavkeFakture> stavkeFakture) {
+		this.stavkeFakture = stavkeFakture;
+	}
+
+	public PoslovniPartner getPoslovniPartner() {
+		return poslovniPartner;
+	}
+
+	public void setPoslovniPartner(PoslovniPartner poslovniPartner) {
+		this.poslovniPartner = poslovniPartner;
+	}
+
+	public PoslovnaGodina getPoslovnaGodina() {
+		return poslovnaGodina;
+	}
+
+	public void setPoslovnaGodina(PoslovnaGodina poslovnaGodina) {
+		this.poslovnaGodina = poslovnaGodina;
+	}
+
+	public Narudzbenica getNarudzbenica() {
+		return narudzbenica;
+	}
+
+	public void setNarudzbenica(Narudzbenica narudzbenica) {
+		this.narudzbenica = narudzbenica;
+	}
+
+	public Preduzece getPreduzece() {
+		return preduzece;
+	}
+
+	public void setPreduzece(Preduzece preduzece) {
+		this.preduzece = preduzece;
+	}
 	
 	
 	
