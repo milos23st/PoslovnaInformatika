@@ -30,6 +30,19 @@ public class StavkeFakture {
 	
 	@ManyToOne
     private Proizvod proizvod;
+	
+	@ManyToOne
+	private IzlaznaFaktura faktura;
+	
+	
+
+	public IzlaznaFaktura getFaktura() {
+		return faktura;
+	}
+
+	public void setFaktura(IzlaznaFaktura faktura) {
+		this.faktura = faktura;
+	}
 
 	public Long getId() {
 		return id;

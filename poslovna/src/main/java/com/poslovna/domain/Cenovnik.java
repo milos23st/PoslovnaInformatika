@@ -21,17 +21,11 @@ public class Cenovnik {
 	
 	private Date datumVazenja;
 	
-	@OneToMany
-	private List<StavkaCenovnika> stavke;
-	
 	@ManyToOne
     private  Valuta valuta;
 
     @ManyToOne
     private Preduzece preduzece;
-
-    @OneToMany
-    private List<StavkaCenovnika> stavkaCenovnikaList;
 
 
 	public Long getId() {
@@ -50,13 +44,6 @@ public class Cenovnik {
 		this.datumVazenja = datumVazenja;
 	}
 
-	public List<StavkaCenovnika> getStavke() {
-		return stavke;
-	}
-
-	public void setStavka(List<StavkaCenovnika> stavke) {
-		this.stavke = stavke;
-	}
 
 	public Valuta getValuta() {
 		return valuta;
@@ -74,17 +61,6 @@ public class Cenovnik {
 		this.preduzece = preduzece;
 	}
 
-	public List<StavkaCenovnika> getStavkaCenovnikaList() {
-		return stavkaCenovnikaList;
-	}
-
-	public void setStavkaCenovnikaList(List<StavkaCenovnika> stavkaCenovnikaList) {
-		this.stavkaCenovnikaList = stavkaCenovnikaList;
-	}
-
-	public void setStavke(List<StavkaCenovnika> stavke) {
-		this.stavke = stavke;
-	}
 	
 	
 	

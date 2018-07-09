@@ -18,8 +18,9 @@ public class PoslovniPartner {
 	
 	private VrstaPartnera vrsta;
 	
-	@OneToMany
-	private List<IzlaznaFaktura> fakture;
+	private String Naziv;
+	
+	private String adresa;
 	
     private String brojTelefona;
 
@@ -53,14 +54,6 @@ public class PoslovniPartner {
 		this.vrsta = vrsta;
 	}
 
-	public List<IzlaznaFaktura> getFakture() {
-		return fakture;
-	}
-
-	public void setFakture(List<IzlaznaFaktura> fakture) {
-		this.fakture = fakture;
-	}
-
 	public String getBrojTelefona() {
 		return brojTelefona;
 	}
@@ -91,6 +84,22 @@ public class PoslovniPartner {
 
 	public void setPreduzece(Preduzece preduzece) {
 		this.preduzece = preduzece;
+	}
+
+	public String getNaziv() {
+		return Naziv;
+	}
+
+	public void setNaziv(String naziv) {
+		Naziv = naziv;
+	}
+
+	public String getAdresa() {
+		return adresa;
+	}
+
+	public void setAdresa(String adresa) {
+		this.adresa = adresa;
 	}
 	
 	

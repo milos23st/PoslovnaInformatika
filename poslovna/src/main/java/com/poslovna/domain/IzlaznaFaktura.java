@@ -22,6 +22,8 @@ public class IzlaznaFaktura {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
+    private String brojFakture;
+    
     private Long broj;
 	
 	@Temporal(TemporalType.DATE)
@@ -48,17 +50,11 @@ public class IzlaznaFaktura {
 	
 	private StatusFakture statusFakture;
 	
-	@OneToMany
-	private List<StavkeFakture> stavkeFakture;
-	
 	@ManyToOne
 	private PoslovniPartner poslovniPartner;
 	
 	@ManyToOne
 	private PoslovnaGodina poslovnaGodina;
-	
-	@ManyToOne
-    private Narudzbenica narudzbenica;
 
     @ManyToOne
     private Preduzece preduzece;
@@ -67,6 +63,15 @@ public class IzlaznaFaktura {
 		Obracunata,
 		Poslata,
 		Stornirana
+	}
+	
+
+	public String getBrojFakture() {
+		return brojFakture;
+	}
+
+	public void setBrojFakture(String brojFakture) {
+		this.brojFakture = brojFakture;
 	}
 
 	public Long getId() {
@@ -173,14 +178,6 @@ public class IzlaznaFaktura {
 		this.bezPDV = bezPDV;
 	}
 
-	public List<StavkeFakture> getStavkeFakture() {
-		return stavkeFakture;
-	}
-
-	public void setStavkeFakture(List<StavkeFakture> stavkeFakture) {
-		this.stavkeFakture = stavkeFakture;
-	}
-
 	public PoslovniPartner getPoslovniPartner() {
 		return poslovniPartner;
 	}
@@ -195,14 +192,6 @@ public class IzlaznaFaktura {
 
 	public void setPoslovnaGodina(PoslovnaGodina poslovnaGodina) {
 		this.poslovnaGodina = poslovnaGodina;
-	}
-
-	public Narudzbenica getNarudzbenica() {
-		return narudzbenica;
-	}
-
-	public void setNarudzbenica(Narudzbenica narudzbenica) {
-		this.narudzbenica = narudzbenica;
 	}
 
 	public Preduzece getPreduzece() {
