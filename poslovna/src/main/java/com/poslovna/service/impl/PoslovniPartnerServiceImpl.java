@@ -31,4 +31,10 @@ public class PoslovniPartnerServiceImpl implements PoslovniPartnerService{
 		return (ArrayList<PoslovniPartner>)repository.findAll();
 	}
 
+	@Override
+	public boolean delete(Long id) {
+		repository.deleteById(id);
+		return true;
+	}
+
 }

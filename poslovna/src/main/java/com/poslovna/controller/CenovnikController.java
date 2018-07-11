@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.poslovna.domain.Cenovnik;
 import com.poslovna.domain.StavkaCenovnika;
 import com.poslovna.dto.CenovnikDTO;
+import com.poslovna.dto.StavkaCenovnikaDTO;
 import com.poslovna.service.CenovnikService;
 import com.poslovna.service.StavkaCenovnikaService;
 
@@ -33,6 +34,7 @@ public class CenovnikController {
 	@Autowired
 	private StavkaCenovnikaService stavkaService;
 	
+	
 	@GetMapping
 	public ResponseEntity<List<Cenovnik>> getAll() {
 		List<Cenovnik> cenovnici = cenovnikService.findAll();
@@ -41,12 +43,32 @@ public class CenovnikController {
 		return new ResponseEntity<>(cenovnici, HttpStatus.OK);
 	}
 	
-	@GetMapping("/{id:\\d+}")
+	@GetMapping("/{id}")
 	public ResponseEntity<Cenovnik> getCenovnik(@PathVariable Long id) {
 		Cenovnik cenovnik = cenovnikService.findOne(id);
 		if(cenovnik == null)
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		return new ResponseEntity<>(cenovnik, HttpStatus.OK);
+	}
+	
+	@PostMapping("/newCenovnik")
+	public ResponseEntity<?> addNewCenovnik(@RequestBody CenovnikDTO dto){
+		Cenovnik c = new Cenovnik();
+		c.setDatumVazenja(dto.getDatum());
+		cenovnikService.add(c);
+		return new ResponseEntity<>(c, HttpStatus.OK);
+	}
+	
+	@PostMapping("/newStavka")
+	public ResponseEntity<?> addNewStavka(@RequestBody StavkaCenovnikaDTO dto){
+		StavkaCenovnika sc = new StavkaCenovnika();
+		sc.setId(dto.getId());
+		sc.setCenovnik(cenovnikService.findOne(dto.getCenovnikId()));
+		sc.setProizvod(dto.getProizvod());
+		stavkaService.add(sc);
+		return new ResponseEntity<>(sc, HttpStatus.OK);
+		
+		
 	}
 	
 	@PostMapping("/{id:\\d+}")
@@ -67,7 +89,7 @@ public class CenovnikController {
 		return new ResponseEntity<>(c, HttpStatus.OK);
 	}
 	
-	@GetMapping("/stavke/{id:\\d+}")
+	@GetMapping("/stavke/{id}")
 	public ResponseEntity<List<StavkaCenovnika>> getStavke(@PathVariable Long id) {
 		Cenovnik c = cenovnikService.findOne(id);
 		ArrayList<StavkaCenovnika> lista = stavkaService.findByCenovnik(c);

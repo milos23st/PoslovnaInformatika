@@ -29,5 +29,6 @@ public class NarudzbenicaDTO {
 		this.stavke = stavke;
 		this.idPoslovnogPartnera = idPoslovnogPartnera;
 	}
+	public NarudzbenicaDTO() {}
 
 }

@@ -46,6 +46,12 @@ public class PoslovnaGodinaServiceImpl implements PoslovnaGodinaService{
 	public ArrayList<PoslovnaGodina> findAll() {
 		return (ArrayList<PoslovnaGodina>)repository.findAll();
 	}
+
+	@Override
+	public boolean delete(Long id) {
+		repository.deleteById(id);
+		return true;
+	}
 	
 	
 

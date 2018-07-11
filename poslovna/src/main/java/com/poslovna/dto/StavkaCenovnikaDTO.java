@@ -4,9 +4,15 @@ import com.poslovna.domain.Proizvod;
 
 public class StavkaCenovnikaDTO {
 	
-private double procenat;
+	private double procenat;
 	
 	private Proizvod proizvod;
+	
+	private Long id;
+	
+	private double cena;
+	
+	public Long cenovnikId;
 	
 	public StavkaCenovnikaDTO() {
 		super();
@@ -27,5 +33,31 @@ private double procenat;
 	public void setProizvod(Proizvod proizvod) {
 		this.proizvod = proizvod;
 	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public double getCena() {
+		return cena;
+	}
+
+	public void setCena(double cena) {
+		this.cena = cena;
+	}
+
+	public Long getCenovnikId() {
+		return cenovnikId;
+	}
+
+	public void setCenovnikId(Long cenovnikId) {
+		this.cenovnikId = cenovnikId;
+	}
+	
+	
 
 }
