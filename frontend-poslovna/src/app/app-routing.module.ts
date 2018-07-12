@@ -7,7 +7,13 @@ import { NarudzbenicaComponent } from './components/narudzbenica/narudzbenica.co
 import { CenovniciComponent } from './components/glavno/cenovnici/cenovnici.component';
 import { ProizvodiComponent } from './components/glavno/proizvodi/proizvodi.component';
 import { FaktureComponent } from './components/glavno/fakture/fakture.component';
-
+import { CenovnikPComponent } from './components/prikaz/cenovnik-p/cenovnik-p.component';
+import { JedinicaMereComponent } from './components/unos/jedinica-mere/jedinica-mere.component'; 
+import { PdvComponent } from './components/unos/pdv/pdv.component';
+import { GrupaProizvodaComponent } from './components/unos/grupa-proizvoda/grupa-proizvoda.component';
+import { PoslovnaGodinaComponent } from './components/unos/poslovna-godina/poslovna-godina.component';
+import { PreduzeceComponent } from './components/unos/preduzece/preduzece.component';
+import { ValutaComponent } from './components/unos/valuta/valuta.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent},
@@ -16,6 +22,20 @@ const routes: Routes = [
   { path: 'cenovnici', component: CenovniciComponent},
   { path: 'proizvodi', component: ProizvodiComponent},
   { path: 'fakture', component: FaktureComponent},
+
+
+
+// prikaz
+  { path: 'cenovnik1', component: CenovnikPComponent},
+
+//unos
+  { path: 'jedinicaMere', component: JedinicaMereComponent},
+  { path: 'pdv', component : PdvComponent },
+  { path: 'grupaProizvoda', component : GrupaProizvodaComponent },
+  { path: 'poslovnaGodina', component : PoslovnaGodinaComponent },
+  { path: 'preduzece', component : PreduzeceComponent },
+  { path: 'valuta', component : ValutaComponent },
+  
 
 
 ];

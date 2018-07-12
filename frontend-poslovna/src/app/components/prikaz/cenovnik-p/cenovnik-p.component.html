@@ -1,0 +1,42 @@
+<div class="divbody">
+
+<div align = "center">
+  <h1>Cenovnici</h1>
+</div>
+
+<div align = "right">
+  <label style="font-size: 20px;">PrikaÅ¾i</label>
+  <select class="selectpicker" style="margin-right: 10%"  [(ngModel)]="brojStranica" (change)="menjaj()">
+    <option [ngValue]="5">5</option>
+    <option [ngValue]="10"> 10</option>
+    <option [ngValue]="15">15</option>
+    <option [ngValue]="20">20</option>
+  </select>
+</div>
+
+
+<div align = "center">
+<table class="table table-striped" style="width: 80%">
+  <tr>
+    <th class = "centerText">Datum isticanja</th>
+    <th class = "centerText">Kompanija</th>
+  </tr>
+
+  <tr *ngFor="let cenovnik of cenovnici.content;">
+    <td class = "centerText">{{cenovnik.datumVazenja}}</td>
+    <td class = "centerText">{{cenovnik.preduzece}}</td>
+    </tr>
+</table>
+</div>
+
+<div> 
+<nav aria-label="Page navigation" style="margin-left: 10%">
+  <ul class="pagination">
+    <li class ="active" *ngFor="let str of iterator;let i = index">
+      <a [ngClass] = "{'page-link': true, 'activePage': selektovanaStranica == i}"
+       (click)="menjajStranicu(i)">{{i+1}}</a></li>
+  </ul>
+</nav>
+</div>
+
+</div>

@@ -4,6 +4,7 @@ import {MatPaginator, MatSort} from '@angular/material';
 import {merge, Observable, of as observableOf} from 'rxjs';
 import {catchError, map, startWith, switchMap} from 'rxjs/operators';
 import { MatProgressSpinnerModule } from '@angular/material';
+import { MatSelectModule } from '@angular/material';
 
 @Component({
   selector: 'app-cenovnici',
@@ -11,6 +12,8 @@ import { MatProgressSpinnerModule } from '@angular/material';
   styleUrls: ['./cenovnici.component.css']
 })
 export class CenovniciComponent implements OnInit {
+
+  selected = 'option2';
 
   displayedColumns: string[] = ['created', 'state', 'number', 'title'];
   exampleDatabase: ExampleHttpDao | null;

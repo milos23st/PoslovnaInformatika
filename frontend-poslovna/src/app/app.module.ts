@@ -65,6 +65,14 @@ import {platformBrowserDynamic} from '@angular/platform-browser-dynamic';
 import { CenovniciComponent } from './components/glavno/cenovnici/cenovnici.component';
 import { ProizvodiComponent } from './components/glavno/proizvodi/proizvodi.component';
 import { FaktureComponent } from './components/glavno/fakture/fakture.component';
+import { DataService } from './data.service';
+import { CenovnikPComponent } from './components/prikaz/cenovnik-p/cenovnik-p.component';
+import { JedinicaMereComponent } from './components/unos/jedinica-mere/jedinica-mere.component';
+import { PdvComponent } from './components/unos/pdv/pdv.component';
+import { ValutaComponent } from './components/unos/valuta/valuta.component';
+import { GrupaProizvodaComponent } from './components/unos/grupa-proizvoda/grupa-proizvoda.component';
+import { PoslovnaGodinaComponent } from './components/unos/poslovna-godina/poslovna-godina.component';
+import { PreduzeceComponent } from './components/unos/preduzece/preduzece.component';
 
 
 @NgModule({
@@ -76,7 +84,14 @@ import { FaktureComponent } from './components/glavno/fakture/fakture.component'
     HomeComponent,
     CenovniciComponent,
     ProizvodiComponent,
-    FaktureComponent
+    FaktureComponent,
+    CenovnikPComponent,
+    JedinicaMereComponent,
+    PdvComponent,
+    ValutaComponent,
+    GrupaProizvodaComponent,
+    PoslovnaGodinaComponent,
+    PreduzeceComponent
   ],
   imports: [
     BrowserModule,
@@ -87,6 +102,10 @@ import { FaktureComponent } from './components/glavno/fakture/fakture.component'
     FormsModule,
     MatCheckboxModule,
     MatProgressSpinnerModule,
+
+    MatSelectModule,
+
+    MatDatepickerModule,
     
 
     MatNativeDateModule,
@@ -137,6 +156,8 @@ import { FaktureComponent } from './components/glavno/fakture/fakture.component'
   ],
 
   providers: [
+
+    DataService,
 
      {
             provide: MATERIAL_SANITY_CHECKS,

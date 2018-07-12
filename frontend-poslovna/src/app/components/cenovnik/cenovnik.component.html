@@ -1,6 +1,6 @@
-<!--The content below is only a placeholder and can be replaced.-->
 <div class="divbody">
 
+  
 <div class="container color-dark">
   <div class="col">
     <h2>Cenovnik</h2>
@@ -9,29 +9,55 @@
 </div>
 <div class="container color-light">
   <div class="col">
-    <p class="sm">Use this form below to log in to your account.</p>
+    <p class="sm">Dodavanje cenovnika.</p>
 
     <form>
 
-      <div class="form-group">
-          <input type="email" class="form-control" placeholder="Enter email..." name="email" required="required">
-      </div>
+      <mat-form-field>
+  <input matInput [matDatepicker]="picker" placeholder="Datum vazenja">
+  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+  <mat-datepicker #picker></mat-datepicker>
+</mat-form-field>
+<br>
 
-      <div class="form-group">
-        <input type="password" class="form-control" name="password" placeholder="Enter password..." required="required">
-      </div>
+     <mat-form-field>
+  <mat-select placeholder="Birajte Valutu">
+    <mat-option>
+      1
+    </mat-option>
+    <mat-option>
+      2
+    </mat-option>
+    <mat-option>
+      3
+    </mat-option>
+  </mat-select>
+</mat-form-field>
+<br>
+      <mat-form-field>
+  <mat-select placeholder="Birajte Preduzece">
+    <mat-option>
+      1
+    </mat-option>
+    <mat-option>
+      2
+    </mat-option>
+    <mat-option>
+      3
+    </mat-option>
+  </mat-select>
+</mat-form-field>
+
+<br>
 
       <div class="form-group">
         <input type="submit" class="btn" value="Submit">
-      <p>Don't have an account? <span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span>  <a routerLink="/registration">Sign Up</a></p>
-
       </div>
     </form>
   </div>
-  
+
+
 </div>
 
+
 </div>
-
-
-
