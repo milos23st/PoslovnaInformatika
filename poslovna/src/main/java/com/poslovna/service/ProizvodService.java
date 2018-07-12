@@ -12,4 +12,6 @@ public interface ProizvodService {
 	Proizvod getById(Long id);
 	
 	ArrayList<Proizvod> findAll();
+	
+	boolean delete(Long id);
 }

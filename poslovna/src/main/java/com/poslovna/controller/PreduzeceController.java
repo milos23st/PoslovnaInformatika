@@ -38,8 +38,8 @@ public class PreduzeceController {
 		p.setEmail(dto.getEmail());
 		p.setId(dto.getId());
 		p.setNazivPreduzeca(dto.getNazivPreduzeca());
-		
-		return new ResponseEntity<>(p, HttpStatus.OK);
+		Preduzece p1 = preduzeceService.add(p);
+		return new ResponseEntity<>(p1, HttpStatus.OK);
 	}
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)

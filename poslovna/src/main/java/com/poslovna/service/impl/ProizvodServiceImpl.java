@@ -32,4 +32,10 @@ public class ProizvodServiceImpl implements ProizvodService{
 		return (ArrayList<Proizvod>) repository.findAll();
 	}
 
+	@Override
+	public boolean delete(Long id) {
+		repository.deleteById(id);
+		return true;
+	}
+
 }
