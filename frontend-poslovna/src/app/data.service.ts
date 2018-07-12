@@ -15,11 +15,13 @@ const httpOptions = {
 
 export class DataService {
 
-  constructor(private http: HttpClient) { }
+  
 
   private heroesUrl = 'http://localhost:1234/api/cenovnik';
 
   private jedinicaMereUrl = 'http://localhost:1234/jedinicaMere';
+
+  
 
   getHeroes (): Observable<CenovniciComponent[]> {
   return this.http.get<CenovniciComponent[]>(this.heroesUrl);
@@ -35,8 +37,13 @@ export class DataService {
 
   addJedMere(jedinicaMere: JedinicaMere): Observable<JedinicaMere> {
     return this.http.post<JedinicaMere>(this.jedinicaMereUrl, jedinicaMere, httpOptions);
+  }
+
+  getJedMere(): Observable<JedinicaMere[]> {
+    return this.http.get<JedinicaMere[]>(this.jedinicaMereUrl);
 
   }
+  constructor(private http: HttpClient) { }
 }
 
 

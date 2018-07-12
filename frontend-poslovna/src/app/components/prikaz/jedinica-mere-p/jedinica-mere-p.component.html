@@ -1,0 +1,91 @@
+<div class="divbody">
+
+  
+<div class="container color-dark">
+  <div class="col">
+    <h2>Jedinica mere</h2>
+  </div>
+ 
+</div>
+<div class="container color-light">
+  <div class="col">
+    <p class="sm">Prikaz jedinica mere.</p>
+ 
+</div>
+<br>
+<div>
+  <mat-table [dataSource]="dataSource" >
+    <ng-container matColumnDef="naziv">
+      <mat-header-cell *matHeaderCellDef> Naziv</mat-header-cell>
+      <mat-cell *matCellDef="let jedinicaMere"> {{jedinicaMere.naziv}}</mat-cell>
+    </ng-container>
+     <ng-container matColumnDef="skracenica">
+      <mat-header-cell *matHeaderCellDef> Skracenica</mat-header-cell>
+      <mat-cell *matCellDef="let jedinicaMere"> {{jedinicaMere.skracenica}}</mat-cell>
+    </ng-container>
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+
+</mat-table>
+
+
+</div>
+
+
+</div>
+</div>
+
+<!--
+
+<div class="divbody">
+
+  
+<div class="container color-dark">
+  <div class="col">
+    <h2>Jedinica mere</h2>
+  </div>
+ 
+</div>
+<div class="container color-light">
+  <div class="col">
+    <p class="sm">Prikaz jedinica mere.</p>
+
+    <a class="list-group-item clearfix" *ngFor="let prikazJedinicaMere of jediniceMere">
+  <div class="pull-left">
+    <h2 class="list-group-item-heading" > Naziv jedinice mere: {{prikazJedinicaMere.naziv}}</h2>
+  </div>
+</a>
+
+<div align = "center">
+<table class="table table-striped" style="width: 80%">
+  <tr>
+    <th class = "centerText">Naziv</th>
+    <th class = "centerText">Skracenica</th>
+  </tr>
+
+  <tr *ngFor="let prikazJedinicaMere of jediniceMere ;">
+    <td class = "centerText">{{prikazJedinicaMere.naziv}}</td>
+    <td class = "centerText">{{prikazJedinicaMere.skracenica}}</td>
+    
+    </tr>
+</table>
+</div>
+
+
+
+  </div>
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+-->
+
