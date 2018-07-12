@@ -18,5 +18,7 @@ public interface FakturaService {
 	ArrayList<IzlaznaFaktura> getFakture(PoslovniPartner byId);
 
 	ArrayList<IzlaznaFaktura> getFaktureIzGodine(PoslovnaGodina poslovnaGodina);
+	
+	boolean delete(Long id);
 
 }

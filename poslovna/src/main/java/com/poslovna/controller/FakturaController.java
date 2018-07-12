@@ -25,6 +25,7 @@ import com.poslovna.domain.IzlaznaFaktura;
 import com.poslovna.domain.PoslovniPartner;
 import com.poslovna.domain.Preduzece;
 import com.poslovna.domain.StavkeFakture;
+import com.poslovna.dto.FakturaDTO;
 import com.poslovna.dto.NarudzbenicaDTO;
 import com.poslovna.dto.StavkaFaktureDTO;
 import com.poslovna.service.FakturaService;
@@ -101,6 +102,44 @@ public class FakturaController {
 	        System.out.println(ex.toString());
 	    }
 		return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+	}
+	
+	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
+	public ResponseEntity<?> getFaktura(@PathVariable Long id) {
+		IzlaznaFaktura retVal = fakturaService.getById(id);
+		if (retVal == null) {
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+		}
+
+		return new ResponseEntity<>(retVal, HttpStatus.OK);
+	}
+	
+	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
+	public ResponseEntity<?> delete(@PathVariable Long id) {
+		boolean deleted = fakturaService.delete(id);
+		return new ResponseEntity<>(deleted, HttpStatus.OK);
+	}
+	
+	@RequestMapping(value = "/{id}", method = RequestMethod.PUT)
+	public ResponseEntity<?> edit(@RequestBody FakturaDTO dto) {
+		IzlaznaFaktura f = fakturaService.getById(dto.getId());
+		f.setBezPDV(dto.getBezPDV());
+		f.setBroj(dto.getBroj());
+		f.setBrojFakture(dto.getBrojFakture());
+		f.setDatumFakture(dto.getDatumFakture());
+		f.setDatumObracuna(dto.getDatumObracuna());
+		f.setDatumValute(dto.getDatumValute());
+		f.setIznosFakture(dto.getIznosFakture());
+		f.setPoslovnaGodina(poslovnaGodinaService.findOne(dto.getPoslovnaGodinaId()));
+		f.setPoslovniPartner(poslovniPartnerService.getById(dto.getId()));
+		f.setPozivNaBroj(dto.getPozivNaBroj());
+		f.setPreduzece(preduzeceService.getById(dto.getPreduzeceId()));
+		f.setUkupanPorez(dto.getUkupanPorez());
+		f.setUkupanRabat(dto.getUkupanRabat());
+		f.setUkupnoRobaIUsluge(dto.getUkupnoRobaIUsluge());
+		f.setUplataNaRacun(dto.getUplataNaRacun());
+		IzlaznaFaktura retVal = fakturaService.add(f);
+		return new ResponseEntity<>(f, HttpStatus.OK);
 	}
 	
 	
@@ -198,7 +237,7 @@ public class FakturaController {
 	private StavkeFakture napraviStavku(StavkaFaktureDTO stavkaFakture, double rabat) {
 		// TODO Auto-generated method stub
 		StavkeFakture retVal = new StavkeFakture();
-		retVal.setKolicina(new Long((int)stavkaFakture.getKolicina()));
+		retVal.setKolicina(stavkaFakture.getKolicina());
 		retVal.setProizvod(proizvodService.getById(stavkaFakture.getProizvod().getId()));
 
 		retVal.setJedinicnaCena(stavkaFakture.getCena());

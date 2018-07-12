@@ -12,7 +12,25 @@ public class StavkaFaktureDTO {
 	
 	private double pdv;
 	
-	private double kolicina;
+	private Long kolicina;
+	
+    private Long id;
+	
+	private double rabat;
+	
+	private double rabatProcenat;
+	
+	private double jedinicnaCena;
+	
+	private double osnovica;
+	
+	private double iznosPDV;
+	
+	private double ukupanIznos;
+	
+	private Long proizvodId;
+	
+	private Long fakturaId;
 	
 	public StavkaFaktureDTO() {
 		super();
@@ -50,12 +68,86 @@ public class StavkaFaktureDTO {
 		this.pdv = pdv;
 	}
 
-	public double getKolicina() {
+	public Long getKolicina() {
 		return kolicina;
 	}
 
-	public void setKolicina(double kolicina) {
+	public void setKolicina(Long kolicina) {
 		this.kolicina = kolicina;
 	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public double getRabat() {
+		return rabat;
+	}
+
+	public void setRabat(double rabat) {
+		this.rabat = rabat;
+	}
+
+	public double getRabatProcenat() {
+		return rabatProcenat;
+	}
+
+	public void setRabatProcenat(double rabatProcenat) {
+		this.rabatProcenat = rabatProcenat;
+	}
+
+	public double getJedinicnaCena() {
+		return jedinicnaCena;
+	}
+
+	public void setJedinicnaCena(double jedinicnaCena) {
+		this.jedinicnaCena = jedinicnaCena;
+	}
+
+	public double getOsnovica() {
+		return osnovica;
+	}
+
+	public void setOsnovica(double osnovica) {
+		this.osnovica = osnovica;
+	}
+
+	public double getIznosPDV() {
+		return iznosPDV;
+	}
+
+	public void setIznosPDV(double iznosPDV) {
+		this.iznosPDV = iznosPDV;
+	}
+
+	public double getUkupanIznos() {
+		return ukupanIznos;
+	}
+
+	public void setUkupanIznos(double ukupanIznos) {
+		this.ukupanIznos = ukupanIznos;
+	}
+
+	public Long getProizvodId() {
+		return proizvodId;
+	}
+
+	public void setProizvodId(Long proizvodId) {
+		this.proizvodId = proizvodId;
+	}
+
+	public Long getFakturaId() {
+		return fakturaId;
+	}
+
+	public void setFakturaId(Long fakturaId) {
+		this.fakturaId = fakturaId;
+	}
+	
+	
 
 }

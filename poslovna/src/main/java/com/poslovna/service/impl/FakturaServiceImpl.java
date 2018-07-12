@@ -46,4 +46,10 @@ public class FakturaServiceImpl implements FakturaService {
 		return (ArrayList<IzlaznaFaktura>) repository.findByPoslovnaGodina(poslovnaGodina);
 	}
 
+	@Override
+	public boolean delete(Long id) {
+		repository.deleteById(id);
+		return true;
+	}
+
 }
