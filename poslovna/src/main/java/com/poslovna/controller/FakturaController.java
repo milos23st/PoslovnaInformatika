@@ -1,13 +1,22 @@
 package com.poslovna.controller;
 
+import java.io.StringWriter;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collections;
 import java.util.Date;
+import java.util.HashMap;
+
+import javax.servlet.http.HttpServletResponse;
+import javax.xml.bind.JAXBContext;
+import javax.xml.bind.Marshaller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.util.Base64Utils;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -21,8 +30,10 @@ import com.poslovna.dto.StavkaFaktureDTO;
 import com.poslovna.service.FakturaService;
 import com.poslovna.service.PoslovnaGodinaService;
 import com.poslovna.service.PoslovniPartnerService;
+import com.poslovna.service.PreduzeceService;
 import com.poslovna.service.ProizvodService;
 import com.poslovna.service.StavkaFaktureService;
+
 
 @RestController
 @RequestMapping("/api")
@@ -43,10 +54,53 @@ public class FakturaController {
 	@Autowired
 	private StavkaFaktureService stavkaFaktureService;
 	
+	@Autowired
+	private PreduzeceService preduzeceService;
+	
 	@RequestMapping(method = RequestMethod.GET,value="/fakture")
 	public ResponseEntity<ArrayList<IzlaznaFaktura>> getFakture() 
 	{
 		return new ResponseEntity<ArrayList<IzlaznaFaktura>>(fakturaService.findAll(), HttpStatus.OK);	
+	}
+	
+	@RequestMapping(method = RequestMethod.POST,value="/fakture")
+	public ResponseEntity<Long> postFakture(@RequestBody NarudzbenicaDTO narudzbenicaDTO)
+	{
+		Long idNoveFaktura = generate(narudzbenicaDTO,preduzeceService.getByName("Moj Dom"));
+
+
+
+		return new ResponseEntity<Long>(idNoveFaktura, HttpStatus.OK);
+	}
+	
+	@RequestMapping(method = RequestMethod.GET,value="/export/fakture/{id}")
+	public ResponseEntity<HashMap<String,String>> postFakture(@PathVariable Long id, HttpServletResponse response)
+	{
+		IzlaznaFaktura novaFaktura = fakturaService.getById(id);
+		long derp =5;
+		try
+		{
+
+
+
+
+			JAXBContext context = JAXBContext.newInstance(IzlaznaFaktura.class);
+			Marshaller marshaller = context.createMarshaller();
+			marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
+
+			StringWriter sw = new StringWriter();
+			marshaller.marshal(novaFaktura, sw);
+
+		    HashMap<String, String> retVal = new HashMap<>();
+		    retVal.put("faktura", Base64Utils.encodeToString(sw.toString().getBytes()));
+
+		    return new ResponseEntity<HashMap<String, String>>(retVal, HttpStatus.OK);
+
+	    } catch (Exception ex) {
+
+	        System.out.println(ex.toString());
+	    }
+		return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 	}
 	
 	

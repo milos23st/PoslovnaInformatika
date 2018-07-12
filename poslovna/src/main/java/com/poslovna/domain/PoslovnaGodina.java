@@ -16,7 +16,7 @@ public class PoslovnaGodina {
 	@GeneratedValue
 	private Long id;
 	
-	private Year godina;
+	private int godina;
 	
 	private boolean zakljucena;
 	
@@ -31,11 +31,11 @@ public class PoslovnaGodina {
 		this.id = id;
 	}
 
-	public Year getGodina() {
+	public int getGodina() {
 		return godina;
 	}
 
-	public void setGodina(Year godina) {
+	public void setGodina(int godina) {
 		this.godina = godina;
 	}
 

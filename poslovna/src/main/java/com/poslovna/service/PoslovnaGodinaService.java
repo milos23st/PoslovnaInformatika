@@ -16,5 +16,7 @@ public interface PoslovnaGodinaService {
 	PoslovnaGodina findOne(Long id);
 
 	ArrayList<PoslovnaGodina> findAll();
+	
+	boolean delete(Long id);
 
 }
