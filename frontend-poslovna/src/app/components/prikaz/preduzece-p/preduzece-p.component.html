@@ -1,0 +1,46 @@
+<div class="divbody">
+
+  
+<div class="container color-dark">
+  <div class="col">
+    <h2>Preduzeca</h2>
+  </div>
+ 
+</div>
+<div class="container color-light">
+  <div class="col">
+    <p class="sm">Prikaz preduzeca.</p>
+ 
+</div>
+<br>
+<div>
+  <mat-table [dataSource]="dataSource" >
+    <ng-container matColumnDef="nazivPreduzeca">
+      <mat-header-cell *matHeaderCellDef> Naziv</mat-header-cell>
+      <mat-cell *matCellDef="let preduzece"> {{preduzece.nazivPreduzeca}}</mat-cell>
+    </ng-container>
+     <ng-container matColumnDef="pib">
+      <mat-header-cell *matHeaderCellDef> PIB</mat-header-cell>
+      <mat-cell *matCellDef="let preduzece"> {{preduzece.pib}}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="email">
+      <mat-header-cell *matHeaderCellDef> Email</mat-header-cell>
+      <mat-cell *matCellDef="let preduzece"> {{preduzece.email}}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="adresa">
+      <mat-header-cell *matHeaderCellDef> Adresa</mat-header-cell>
+      <mat-cell *matCellDef="let preduzece"> {{preduzece.adresa}}</mat-cell>
+    </ng-container>
+    
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+
+</mat-table>
+
+
+</div>
+
+
+</div>
+</div>
+

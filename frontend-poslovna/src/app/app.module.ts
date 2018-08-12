@@ -74,6 +74,7 @@ import { GrupaProizvodaComponent } from './components/unos/grupa-proizvoda/grupa
 import { PoslovnaGodinaComponent } from './components/unos/poslovna-godina/poslovna-godina.component';
 import { PreduzeceComponent } from './components/unos/preduzece/preduzece.component';
 import { JedinicaMerePComponent } from './components/prikaz/jedinica-mere-p/jedinica-mere-p.component';
+import { PreduzecePComponent } from './components/prikaz/preduzece-p/preduzece-p.component';
 
 
 @NgModule({
@@ -93,7 +94,8 @@ import { JedinicaMerePComponent } from './components/prikaz/jedinica-mere-p/jedi
     GrupaProizvodaComponent,
     PoslovnaGodinaComponent,
     PreduzeceComponent,
-    JedinicaMerePComponent
+    JedinicaMerePComponent,
+    PreduzecePComponent
   ],
   imports: [
     BrowserModule,

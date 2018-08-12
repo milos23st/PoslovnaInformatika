@@ -11,22 +11,22 @@
   <div class="col">
     <p class="sm">Dodavanje preduzeca.</p>
 
-    <form>
+    <form name="form" (ngSubmit)="addForm.form.valid && addPred()" class="register-form" #addForm="ngForm">
 
-       <mat-form-field class="matf">
-    <input matInput placeholder="Naziv" name="naziv">
+       <mat-form-field class="matf" [ngClass]="{ 'has-error': addForm.submitted && !nazivPreduzeca.valid }">
+    <input matInput placeholder="Naziv" name="nazivPreduzeca" name="naziv" [(ngModel)]="preduzece.nazivPreduzeca" #nazivPreduzeca="ngModel">
       </mat-form-field>
 
-      <mat-form-field class="matf">
-    <input matInput placeholder="PIB" name="pib">
+      <mat-form-field class="matf" [ngClass]="{ 'has-error': addForm.submitted && !pib.valid }">
+    <input matInput placeholder="PIB" name="pib" [(ngModel)]="preduzece.pib" #pib="ngModel">
       </mat-form-field>
 
-       <mat-form-field class="matf">
-    <input matInput placeholder="Email" name="email">
+       <mat-form-field class="matf" [ngClass]="{ 'has-error': addForm.submitted && !email.valid }">
+    <input matInput placeholder="Email" name="email" [(ngModel)]="preduzece.email" #email="ngModel">
       </mat-form-field>
 
-       <mat-form-field class="matf">
-    <input matInput placeholder="Adresa" name="adresa">
+       <mat-form-field class="matf" [ngClass]="{ 'has-error': addForm.submitted && !adresa.valid }">
+    <input matInput placeholder="Adresa" name="adresa" [(ngModel)]="preduzece.adresa" #adresa="ngModel">
       </mat-form-field>
 
       

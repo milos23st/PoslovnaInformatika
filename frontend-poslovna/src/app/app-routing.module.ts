@@ -15,6 +15,7 @@ import { PoslovnaGodinaComponent } from './components/unos/poslovna-godina/poslo
 import { PreduzeceComponent } from './components/unos/preduzece/preduzece.component';
 import { ValutaComponent } from './components/unos/valuta/valuta.component';
 import { JedinicaMerePComponent } from './components/prikaz/jedinica-mere-p/jedinica-mere-p.component';
+import { PreduzecePComponent } from './components/prikaz/preduzece-p/preduzece-p.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent},
@@ -29,6 +30,7 @@ const routes: Routes = [
 // prikaz
   { path: 'cenovnik1', component: CenovnikPComponent},
   { path: 'jedinicaMere1', component: JedinicaMerePComponent},
+  { path: 'preduzece1', component: PreduzecePComponent},
   
 
 //unos
