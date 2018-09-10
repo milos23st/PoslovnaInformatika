@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { Cenovnik } from './components/models/cenovnik';
 import { JedinicaMere } from './components/models/jedinica-mere';
 import { Preduzece } from './components/models/preduzece';
+import { Valuta } from './components/models/Valuta';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': 'true' })
@@ -23,6 +24,8 @@ export class DataService {
   private jedinicaMereUrl = 'http://localhost:1234/jedinicaMere';
   
   private preduzeceUrl = 'http://localhost:1234/preduzece';
+
+  private valutaUrl = 'http://localhost:1234/valuta';
 
   
 
@@ -58,6 +61,19 @@ export class DataService {
   }
   
 // preduzece- kraj
+
+// valuta - pocetak
+
+  addValute(valuta: Valuta): Observable<Valuta> {
+    return this.http.post<Valuta>(this.valutaUrl, valuta, httpOptions);
+  }
+
+  getValute(): Observable<Valuta[]> {
+    return this.http.get<Valuta[]>(this.valutaUrl +'/getAll');
+
+  }
+
+// valuta - kraj 
   constructor(private http: HttpClient) { }
 }
 

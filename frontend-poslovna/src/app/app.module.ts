@@ -76,6 +76,7 @@ import { PoslovnaGodinaComponent } from './components/unos/poslovna-godina/poslo
 import { PreduzeceComponent } from './components/unos/preduzece/preduzece.component';
 import { JedinicaMerePComponent } from './components/prikaz/jedinica-mere-p/jedinica-mere-p.component';
 import { PreduzecePComponent } from './components/prikaz/preduzece-p/preduzece-p.component';
+import { ValutaPComponent } from './components/prikaz/valuta-p/valuta-p.component';
 
 
 @NgModule({
@@ -97,7 +98,8 @@ import { PreduzecePComponent } from './components/prikaz/preduzece-p/preduzece-p
     PreduzeceComponent,
     JedinicaMerePComponent,
     PreduzecePComponent,
-    SearchPipe
+    SearchPipe,
+    ValutaPComponent
   ],
   imports: [
     BrowserModule,

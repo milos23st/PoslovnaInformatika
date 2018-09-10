@@ -16,6 +16,7 @@ import { PreduzeceComponent } from './components/unos/preduzece/preduzece.compon
 import { ValutaComponent } from './components/unos/valuta/valuta.component';
 import { JedinicaMerePComponent } from './components/prikaz/jedinica-mere-p/jedinica-mere-p.component';
 import { PreduzecePComponent } from './components/prikaz/preduzece-p/preduzece-p.component';
+import { ValutaPComponent } from './components/prikaz/valuta-p/valuta-p.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent},
@@ -31,6 +32,7 @@ const routes: Routes = [
   { path: 'cenovnik1', component: CenovnikPComponent},
   { path: 'jedinicaMere1', component: JedinicaMerePComponent},
   { path: 'preduzece1', component: PreduzecePComponent},
+  { path: 'valute1', component: ValutaPComponent},
   
 
 //unos

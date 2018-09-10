@@ -16,6 +16,7 @@ import com.poslovna.domain.PoslovniPartner;
 import com.poslovna.domain.Preduzece;
 import com.poslovna.domain.Proizvod;
 import com.poslovna.domain.StavkaCenovnika;
+import com.poslovna.domain.Valuta;
 import com.poslovna.service.CenovnikService;
 import com.poslovna.service.GrupaProizvodaService;
 import com.poslovna.service.JedinicaMereService;
@@ -24,6 +25,7 @@ import com.poslovna.service.PoslovniPartnerService;
 import com.poslovna.service.PreduzeceService;
 import com.poslovna.service.ProizvodService;
 import com.poslovna.service.StavkaCenovnikaService;
+import com.poslovna.service.ValutaService;
 
 @Component
 public class TestData {
@@ -51,6 +53,9 @@ public class TestData {
 	@Autowired
 	private PoslovniPartnerService poslovniPartnerService;
 	
+	@Autowired
+	private ValutaService valutaService;
+	
 	@PostConstruct
 	private void init() {
 		
@@ -74,8 +79,15 @@ public class TestData {
 		Preduzece p = new Preduzece();
 		p.setAdresa("Dunavska 31, Novi Sad");
 		p.setNazivPreduzeca("Moj Dom");
-		p.setAdresa("0210483328");
+		p.setEmail("mojdom@gmail.com");
+		p.setPib("0210483328");
 		preduzeceService.add(p);
+		Preduzece p1 = new Preduzece();
+		p1.setAdresa("Kisacka 55, Novi Sad");
+		p1.setNazivPreduzeca("Gigatron");
+		p1.setEmail("gigatron@gmail.com");
+		p1.setPib("0210483328");
+		preduzeceService.add(p1);
 		
 		Cenovnik c1 = new Cenovnik();
 		c1.setDatumVazenja(new Date()); //2018-01-01
@@ -112,6 +124,29 @@ public class TestData {
 		jedinicaMereService.add(jm5);
 		jedinicaMereService.add(jm6);
 		jedinicaMereService.add(jm7);
+		
+		Valuta va1 = new Valuta();
+		va1.setNaziv("Evro");
+		va1.setOznaka("EUR");
+		Valuta va2 = new Valuta();
+		va2.setNaziv("Srpski dinar");
+		va2.setOznaka("RSD");
+		Valuta va3 = new Valuta();
+		va3.setNaziv("Americki dolar");
+		va3.setOznaka("USD");
+		Valuta va4 = new Valuta();
+		va4.setNaziv("Svajcarski franak");
+		va4.setOznaka("CHF");
+		Valuta va5 = new Valuta();
+		va5.setNaziv("Madjarska forinta");
+		va5.setOznaka("HUF");
+		valutaService.add(va1);
+		valutaService.add(va2);
+		valutaService.add(va3);
+		valutaService.add(va4);
+		valutaService.add(va5);
+		
+		
 		
 		Proizvod pr1 = new Proizvod();
 		pr1.setNazivProizvoda("LG monitor");
