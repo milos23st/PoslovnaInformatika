@@ -29,4 +29,10 @@ public class CenovnikServiceImpl implements CenovnikService {
 		return repository.getOne(id);
 	}
 
+	@Override
+	public boolean delete(Long id) {
+		
+		return false;
+	}
+
 }

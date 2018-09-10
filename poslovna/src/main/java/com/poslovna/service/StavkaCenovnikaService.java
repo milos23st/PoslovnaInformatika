@@ -13,5 +13,7 @@ public interface StavkaCenovnikaService {
 	double findCenaByCenovnikAndProizvod(Cenovnik cn, Proizvod proizvod);
 
 	ArrayList<StavkaCenovnika> findByCenovnik(Cenovnik c);
+	
+	boolean delete(Long id);
 
 }

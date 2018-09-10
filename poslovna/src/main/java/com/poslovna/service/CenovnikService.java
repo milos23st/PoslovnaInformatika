@@ -13,5 +13,7 @@ public interface CenovnikService {
 	List<Cenovnik> findAll();
 	
 	Cenovnik findOne(Long id);
+	
+	boolean delete(Long id);
 
 }

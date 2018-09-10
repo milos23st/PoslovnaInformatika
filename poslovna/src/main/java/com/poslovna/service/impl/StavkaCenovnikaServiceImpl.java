@@ -31,4 +31,11 @@ public class StavkaCenovnikaServiceImpl implements StavkaCenovnikaService {
 		return (ArrayList<StavkaCenovnika>)repository.findByCenovnik(c);
 	}
 
+	@Override
+	public boolean delete(Long id) {
+		repository.deleteById(id);
+		
+		return true;
+	}
+
 }

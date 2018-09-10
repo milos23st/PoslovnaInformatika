@@ -23,6 +23,9 @@ export class CenovnikService {
   addCenovnik(id: number, stavke: StavkaCenovnika[], datum: number): Observable<Cenovnik> {
     return this.http.post<Cenovnik>('http://localhost:1234/api/cenovnik/' + id, stavke, httpOptions);
   }
+  deleteStavka(id: number): Observable<boolean>{
+    return this.http.delete<boolean>('http://localhost:1234/api/cenovnik/'+id,httpOptions);
+  }
 
 
 }

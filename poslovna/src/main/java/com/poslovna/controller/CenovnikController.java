@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.poslovna.domain.Cenovnik;
@@ -95,6 +96,11 @@ public class CenovnikController {
 		Cenovnik c = cenovnikService.findOne(id);
 		ArrayList<StavkaCenovnika> lista = stavkaService.findByCenovnik(c);
 		return new ResponseEntity<>(lista, HttpStatus.OK);
+	}
+	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
+	public ResponseEntity<?> delete(@PathVariable Long id) {
+		boolean deleted = stavkaService.delete(id);
+		return new ResponseEntity<>(deleted, HttpStatus.OK);
 	}
 
 }

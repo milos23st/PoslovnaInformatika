@@ -42,14 +42,20 @@ export class CenovnikPComponent implements OnInit {
   addCenovnik() {
       let today = new Date();
       let today1 = today.getDate();
-      this.cenovnikService.addCenovnik(this.selectedCenovnik, this.stavkeOut, today1).subscribe();
-      this.service.preuzmiCenovnike(0, this.brojStranica).subscribe(
+      this.cenovnikService.addCenovnik(this.selectedCenovnik, this.stavkeOut, today1).subscribe(
+        data => {
+          this.service.preuzmiCenovnike(0, this.brojStranica).subscribe(
       (data: any) => {
         this.cenovnici = data;
         this.iterator = Array(data.totalPages).fill(0).map((x, i) => i);
       }
     );
+        }
+      );
       this.toggleUnos();
+  }
+  preuzmiCenovnike(){
+
   }
   toggleUnos(){
     if(this.unos === false){
@@ -60,6 +66,21 @@ export class CenovnikPComponent implements OnInit {
       this.unos = false;
       return;
     }
+  }
+  deleteStavka(i: number){
+    let j = this.stavke[i].id;
+    this.cenovnikService.deleteStavka(j).subscribe(
+      data => {
+        this.service.preuzmiCenovnike(0, this.brojStranica).subscribe(
+      (data: any) => {
+        this.cenovnici = data;
+        this.iterator = Array(data.totalPages).fill(0).map((x, i) => i);
+        this.showStavke();
+      }
+    );
+
+      }
+    );
   }
   showStavke(){
     this.cenovnikService.getStavke(this.selectedCenovnik).subscribe(

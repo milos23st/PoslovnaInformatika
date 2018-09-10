@@ -47,6 +47,8 @@
     <td class = "centerText" *ngIf="unos">
       <input type="number" [(ngModel)]="stavkeOut[i].procenat" name="procenat" #procenat1="ngModel">
     </td>
+    <td class = "centerText"><button class="btn btn-custom" (click)="deleteStavka(i)">
+      <i class="fas fa-plus-circle">Obrisi</i></button></td>
     </tr>
 </table>
 </div>
