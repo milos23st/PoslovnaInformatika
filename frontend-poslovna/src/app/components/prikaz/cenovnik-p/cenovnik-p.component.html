@@ -5,7 +5,7 @@
 </div>
 
 <div align = "right">
-  <label style="font-size: 20px;">PrikaÅ¾i</label>
+  <label style="font-size: 20px;">PrikaÃ…Â¾i</label>
   <select class="selectpicker" style="margin-right: 10%"  [(ngModel)]="brojStranica" (change)="menjaj()">
     <option [ngValue]="5">5</option>
     <option [ngValue]="10"> 10</option>
@@ -14,23 +14,43 @@
   </select>
 </div>
 
-
+<div class="form-group">
+          <label>Izaberite cenovnik:</label><br>
+          <select  [(ngModel)]="selectedCenovnik" name="selectedCenovnik" #selectedCenovnik1="ngModel" (ngModelChange)="showStavke()">
+            <option *ngFor="let cenovnik of cenovnici" [ngValue]="cenovnik.id">{{cenovnik.datumVazenja}}</option>
+          </select>
+  </div>
+  <button class="btn btn-custom" (click)="toggleUnos()">
+      <i class="fas fa-plus-circle">Dodajte cenovnik</i></button><br><br>
+  <input type="text" id="searchTextId" [(ngModel)]="searchText" name="searchText" placeholder="Pretrazi po proizvodu"><br>
+  <form name="form" #addForm="ngForm">
+   <div class="form-group">
+  <input type="submit" class="btn" value="Zavrsi" (click)="addCenovnik()" *ngIf="unos">
+   </div>          
 <div align = "center">
 <table class="table table-striped" style="width: 80%">
   <tr>
-    <th class = "centerText">Datum isticanja</th>
-    <th class = "centerText">Kompanija</th>
+    <th class = "centerText">Proizvod</th>
+    <th class = "centerText">Grupa Proizvoda</th>
+    <th class = "centerText">Jedinica Mere</th>
+    <th class = "centerText">Preduzece</th>
+    <th class = "centerText">Cena</th>
+    <th class = "centerText" *ngIf="unos">Unos procenta povecanja/umanjenja</th>
   </tr>
 
-  <tr *ngFor="let cenovnik of cenovnici.content;">
-    <td class = "centerText">{{cenovnik.datumVazenja}}</td>
-    <td class = "centerText">{{cenovnik.preduzece}}</td>
-    <td class = "centerText">{{cenovnik}}</td>
-    
+  <tr *ngFor="let stavka of (stavke | search: searchText); let i = index">
+    <td class = "centerText">{{stavka.proizvod.nazivProizvoda}}</td>
+    <td class = "centerText">{{stavka.proizvod.grupaProizvod.naziv}}</td>
+    <td class = "centerText">{{stavka.proizvod.jedinicaMere.naziv}}</td>
+    <td class = "centerText">{{stavka.proizvod.preduzece.nazivPreduzeca}}</td>
+    <td class = "centerText">{{stavka.cena}}</td>
+    <td class = "centerText" *ngIf="unos">
+      <input type="number" [(ngModel)]="stavkeOut[i].procenat" name="procenat" #procenat1="ngModel">
+    </td>
     </tr>
 </table>
 </div>
-
+</form> 
 <div> 
 <nav aria-label="Page navigation" style="margin-left: 10%">
   <ul class="pagination">
@@ -40,5 +60,4 @@
   </ul>
 </nav>
 </div>
-
 </div>

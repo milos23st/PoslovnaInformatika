@@ -8,7 +8,7 @@ export class Proizvod {
         public nazivProizvoda: string,
         public opis : string,
         public preduzece: Preduzece,
-        public grupaProizvoda: GrupaProizvoda,
+        public grupaProizvod: GrupaProizvoda,
         public jedinicaMere: JedinicaMere,
         public id?: string
 

@@ -30,7 +30,7 @@ export class DataService {
   return this.http.get<CenovniciComponent[]>(this.heroesUrl);
 }
  preuzmiCenovnike(page, size) {
-    return this.http.get("http://localhost:1234/api/cenovnik/pages?page="+page+"&size="+size, httpOptions);
+    return this.http.get('http://localhost:1234/api/cenovnik', httpOptions);
   }
 
   getCenovnik(): Observable<Cenovnik[]> {

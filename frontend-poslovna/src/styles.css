@@ -21,5 +21,8 @@ body p {
 .divbody {
     padding: 2em;
 }
+body {
+    color: black;
+}
 
 

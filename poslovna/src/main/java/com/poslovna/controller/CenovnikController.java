@@ -1,6 +1,7 @@
 package com.poslovna.controller;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -72,17 +73,17 @@ public class CenovnikController {
 	}
 	
 	@PostMapping("/{id:\\d+}")
-	public ResponseEntity<Cenovnik> addCenovnik(@PathVariable Long id, @RequestBody CenovnikDTO dto) {
+	public ResponseEntity<Cenovnik> addCenovnik(@PathVariable Long id, @RequestBody StavkaCenovnikaDTO[] stavke) {
 		Cenovnik c = new Cenovnik();
 		Cenovnik cn = cenovnikService.findOne(id);
-		c.setDatumVazenja(dto.getDatum());
+		c.setDatumVazenja(new Date());
 		cenovnikService.add(c);
-		for(int i = 0; i<dto.getStavke().size(); i++) {
+		for(int i = 0; i<stavke.length; i++) {
 			StavkaCenovnika sc = new StavkaCenovnika();
 			sc.setCenovnik(c);
-			sc.setProizvod(dto.getStavke().get(i).getProizvod());
-			double staraCena = stavkaService.findCenaByCenovnikAndProizvod(cn, dto.getStavke().get(i).getProizvod());
-			sc.setCena(dto.getStavke().get(i).getProcenat()
+			sc.setProizvod(stavke[i].getProizvod());
+			double staraCena = stavkaService.findCenaByCenovnikAndProizvod(cn, stavke[i].getProizvod());
+			sc.setCena(stavke[i].getProcenat()
 					*staraCena/100+staraCena);
 			stavkaService.add(sc);
 		}

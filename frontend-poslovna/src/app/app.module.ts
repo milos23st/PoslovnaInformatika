@@ -60,7 +60,8 @@ import {
   MatTooltipModule,
   MatTreeModule,
 } from '@angular/material';
-
+import { Pipe, PipeTransform } from '@angular/core';
+import { SearchPipe } from './components/prikaz/cenovnik-p/search.pipe';
 import {platformBrowserDynamic} from '@angular/platform-browser-dynamic';
 import { CenovniciComponent } from './components/glavno/cenovnici/cenovnici.component';
 import { ProizvodiComponent } from './components/glavno/proizvodi/proizvodi.component';
@@ -95,7 +96,8 @@ import { PreduzecePComponent } from './components/prikaz/preduzece-p/preduzece-p
     PoslovnaGodinaComponent,
     PreduzeceComponent,
     JedinicaMerePComponent,
-    PreduzecePComponent
+    PreduzecePComponent,
+    SearchPipe
   ],
   imports: [
     BrowserModule,
