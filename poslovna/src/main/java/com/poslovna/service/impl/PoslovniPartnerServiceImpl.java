@@ -37,4 +37,15 @@ public class PoslovniPartnerServiceImpl implements PoslovniPartnerService{
 		return true;
 	}
 
+	@Override
+	public ArrayList<PoslovniPartner> findAllKupac() {
+		ArrayList<PoslovniPartner> p = (ArrayList<PoslovniPartner>) repository.findAll();
+		ArrayList<PoslovniPartner> pp = new ArrayList<PoslovniPartner>();
+		for(PoslovniPartner par: p) {
+			if(par.getVrsta().equals(PoslovniPartner.VrstaPartnera.Kupac))
+				pp.add(par);
+		}
+		return pp;
+	}
+
 }

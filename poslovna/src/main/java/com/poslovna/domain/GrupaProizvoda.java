@@ -9,6 +9,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 
+
+
 @Entity
 public class GrupaProizvoda {
 	
@@ -22,7 +24,18 @@ public class GrupaProizvoda {
     @Column(length = 100)
     private String opis;
     
-    private double pdv;
+    @ManyToOne
+	private PDV pdv;
+    
+    
+
+	public PDV getPdv() {
+		return pdv;
+	}
+
+	public void setPdv(PDV pdv) {
+		this.pdv = pdv;
+	}
 
 	public Long getId() {
 		return id;
@@ -48,13 +61,6 @@ public class GrupaProizvoda {
 		this.opis = opis;
 	}
 
-	public double getPdv() {
-		return pdv;
-	}
-
-	public void setPdv(double pdv) {
-		this.pdv = pdv;
-	}
     
     
 

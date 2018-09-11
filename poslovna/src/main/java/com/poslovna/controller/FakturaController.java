@@ -6,6 +6,7 @@ import java.util.Calendar;
 import java.util.Collections;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 
 import javax.servlet.http.HttpServletResponse;
 import javax.xml.bind.JAXBContext;
@@ -15,25 +16,32 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.util.Base64Utils;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.poslovna.domain.Cenovnik;
 import com.poslovna.domain.IzlaznaFaktura;
+import com.poslovna.domain.PDV;
 import com.poslovna.domain.PoslovniPartner;
 import com.poslovna.domain.Preduzece;
+import com.poslovna.domain.Proizvod;
 import com.poslovna.domain.StavkeFakture;
 import com.poslovna.dto.FakturaDTO;
 import com.poslovna.dto.NarudzbenicaDTO;
 import com.poslovna.dto.StavkaFaktureDTO;
+import com.poslovna.service.CenovnikService;
 import com.poslovna.service.FakturaService;
 import com.poslovna.service.PoslovnaGodinaService;
 import com.poslovna.service.PoslovniPartnerService;
 import com.poslovna.service.PreduzeceService;
 import com.poslovna.service.ProizvodService;
+import com.poslovna.service.StavkaCenovnikaService;
 import com.poslovna.service.StavkaFaktureService;
+
 
 
 @RestController
@@ -57,6 +65,37 @@ public class FakturaController {
 	
 	@Autowired
 	private PreduzeceService preduzeceService;
+	
+	@Autowired
+	private CenovnikService cenovnikService;
+	
+	@Autowired
+	private StavkaCenovnikaService stavkaCenovnikaService;
+	
+	@GetMapping("/stavke")
+	public ResponseEntity<List<StavkaFaktureDTO>> getStavke() {
+		ArrayList<StavkaFaktureDTO> stavke = new ArrayList<>();
+		ArrayList<Proizvod> proizvodi = proizvodService.findAll();
+		for(int i = 0; i<proizvodi.size(); i++) {
+			StavkaFaktureDTO sDTO = new StavkaFaktureDTO();
+			sDTO.setProizvod(proizvodi.get(i));
+			PDV pdv = proizvodi.get(i).getGrupaProizvod().getPdv();
+			Cenovnik c = cenovnikService.findActive(System.currentTimeMillis());
+			sDTO.setCena(stavkaCenovnikaService.findCenaByCenovnikAndProizvod(c, proizvodi.get(i)));
+			sDTO.setPdv(sDTO.getCena()*sDTO.getStopaPDV()/100);
+			sDTO.setStopaPDV(10);
+			sDTO.setKolicina((long) 0);
+			stavke.add(sDTO);
+			}
+		if(stavke == null || stavke.isEmpty())
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+		return new ResponseEntity<>(stavke, HttpStatus.OK);
+	}
+	@GetMapping("/partneri")
+	public ResponseEntity<ArrayList<PoslovniPartner>> getPoslovniPartneri()
+	{
+		return new ResponseEntity<ArrayList<PoslovniPartner>>(poslovniPartnerService.findAllKupac(), HttpStatus.OK);
+	}
 	
 	@RequestMapping(method = RequestMethod.GET,value="/fakture")
 	public ResponseEntity<ArrayList<IzlaznaFaktura>> getFakture() 
@@ -206,12 +245,18 @@ public class FakturaController {
 	
 	public Long getBroj(PoslovniPartner pp) {
 		ArrayList<IzlaznaFaktura> fakture = fakturaService.getFakture(pp);
+		if(fakture.isEmpty()) {
+			System.out.println("NOPE");
+			return new Long(0);
+		}
 		ArrayList<Long> brojevi = new ArrayList<Long>();
 		for(IzlaznaFaktura faktura: fakture) {
 			brojevi.add(faktura.getBroj());
 		}
+		
 		Long max = Collections.max(brojevi);
-		return max++;
+		System.out.println(max+1);
+		return max+1;
 		
 	}
 	private double sracunajRabatNarudzbenice(ArrayList<StavkaFaktureDTO> stavke) {

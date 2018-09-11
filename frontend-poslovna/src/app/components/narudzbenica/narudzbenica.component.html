@@ -3,22 +3,25 @@
 
 
 <div>
+<button mat-raised-button (click)="toggleUnos()">
+<i class="fas fa-plus-circle">Unesite narudzbinu</i></button><br><br> 
+<div *ngIf="unos">
+<label>Izaberite poslovnog partnera: </label>
+<select  [(ngModel)]="narudzbenica.idPoslovnogPartnera" name="pp" #pp="ngModel">
+    <option *ngFor="let partner of partneri" [ngValue]="partner.id">{{partner.naziv}}</option>
+  </select><br>
+  <button mat-raised-button (click)="naruci()">
+      <i class="fas fa-plus-circle">Naruci</i></button><br><br> 
+</div>
 <mat-form-field>
   <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
 </mat-form-field>
-
-<button mat-raised-button color="accent">Click me!</button>
-<button mat-raised-button color="accent">Click </button>
-
-<button mat-mini-fab color="accent">me!</button>
-
-<button mat-icon-button color="accent">!</button>
 </div>
 
 
 <div class="mat-elevation-z8">
   <table mat-table [dataSource]="dataSource" matSort>
-
+    
    <!-- Checkbox Column -->
   <ng-container matColumnDef="select">
     <th mat-header-cell *matHeaderCellDef>
@@ -34,37 +37,63 @@
       </mat-checkbox>
     </td>
   </ng-container>
-
-    <!-- ID Column -->
-    <ng-container matColumnDef="id">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>
-      <td mat-cell *matCellDef="let row"> {{row.id}} </td>
-    </ng-container>
-
+  
     <!-- Progress Column -->
-    <ng-container matColumnDef="progress">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header> Progress </th>
-      <td mat-cell *matCellDef="let row"> {{row.progress}}% </td>
+    <ng-container matColumnDef="Proizvod">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Proizvod </th>
+      <td mat-cell *matCellDef="let row"> {{row.proizvod.nazivProizvoda}} </td>
     </ng-container>
 
     <!-- Name Column -->
-    <ng-container matColumnDef="name">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
-      <td mat-cell *matCellDef="let row"> {{row.name}} </td>
+    <ng-container matColumnDef="Grupa proizvoda">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Grupa proizvoda </th>
+      <td mat-cell *matCellDef="let row"> {{row.proizvod.grupaProizvod.naziv}} </td>
     </ng-container>
 
     
 
 
     <!-- Color Column -->
-    <ng-container matColumnDef="color">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header> Color </th>
-      <td mat-cell *matCellDef="let row" [style.color]="row.color"> {{row.color}} </td>
+    <ng-container matColumnDef="Jedinica Mere">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Jedinica mere </th>
+      <td mat-cell *matCellDef="let row" [style.color]="row.color"> {{row.proizvod.jedinicaMere.naziv}} </td>
     </ng-container>
 
+    <ng-container matColumnDef="Cena">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Cena </th>
+      <td mat-cell *matCellDef="let row"> {{row.cena}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="Preduzece">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Preduzece </th>
+      <td mat-cell *matCellDef="let row"> {{row.proizvod.preduzece.nazivPreduzeca}} </td>
+    </ng-container>
+    
+    <!-- Progress Column -->
+    
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="Stopa PDV">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Stopa PDV </th>
+      <td mat-cell *matCellDef="let row"> {{row.stopaPDV}} </td>
+    </ng-container>
+
+    
+
+
+    <ng-container matColumnDef="PDV">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> PDV </th>
+      <td mat-cell *matCellDef="let row" [style.color]="row.color"> {{row.pdv}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="Kolicina" *ngIf="unos">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Kolicina </th>
+      <td mat-cell *matCellDef="let row; let i = index" [style.color]="row.color"> <input type="number" [(ngModel)]="stavkeOut[i].kolicina" name="kolicina" #kolicina="ngModel"> </td>
+    </ng-container>
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;">
+    <tr mat-row *matRowDef="let row; columns: displayedColumns">
     </tr>
+    
   </table>
 
   <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>

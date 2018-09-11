@@ -31,7 +31,7 @@ public class PoslovniPartner {
     @ManyToOne
     private Preduzece preduzece;
 	
-	private enum VrstaPartnera {
+	public enum VrstaPartnera {
 		Kupac,
 		Dobavljac,
 		Oboje

@@ -36,6 +36,7 @@
     <th class = "centerText">Preduzece</th>
     <th class = "centerText">Cena</th>
     <th class = "centerText" *ngIf="unos">Unos procenta povecanja/umanjenja</th>
+    <th></th>
   </tr>
 
   <tr *ngFor="let stavka of (stavke | search: searchText); let i = index">
@@ -47,7 +48,7 @@
     <td class = "centerText" *ngIf="unos">
       <input type="number" [(ngModel)]="stavkeOut[i].procenat" name="procenat" #procenat1="ngModel">
     </td>
-    <td class = "centerText"><button class="btn btn-custom" (click)="deleteStavka(i)">
+    <td class = "centerText"><button class="btn btn-danger" (click)="deleteStavka(i)">
       <i class="fas fa-plus-circle">Obrisi</i></button></td>
     </tr>
 </table>

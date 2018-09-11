@@ -14,5 +14,7 @@ public interface PoslovniPartnerService {
 	ArrayList<PoslovniPartner> findAll();
 	
 	boolean delete(Long id);
+	
+	ArrayList<PoslovniPartner> findAllKupac();
 
 }

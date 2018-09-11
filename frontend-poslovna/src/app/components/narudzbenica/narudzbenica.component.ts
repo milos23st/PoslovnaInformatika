@@ -1,39 +1,43 @@
 import {SelectionModel} from '@angular/cdk/collections';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import {MatPaginator, MatSort, MatTableDataSource, MatCheckboxModule } from '@angular/material';
+import { Proizvod } from '../models/proizvod';
+import { CenovnikService } from '../prikaz/cenovnik-p/cenovnik.service';
+import { Preduzece } from '../models/preduzece';
+import { GrupaProizvoda } from '../models/grupa-proizvoda';
+import { JedinicaMere } from '../models/jedinica-mere';
+import { FakturaService } from './faktura.service';
+import { StavkaFakture } from '../models/stavka-fakture';
+import { PoslovniPartner } from '../models/poslovni-partner';
+import { Narudzbenica } from '../models/narudzbenica';
 
-
-
-export interface UserData {
-  id: string;
-  name: string;
-  progress: string;
-  color: string;
+export interface StavkeData {
+  proizvod: Proizvod;
+  cena: string;
+  stopaPDV: string;
+  pdv: string;
+  kolicina: string;
+  id?: string;
 }
 
 
-/** Constants used to fill up our data base. */
-const COLORS: string[] = ['maroon', 'red', 'orange', 'yellow', 'olive', 'green', 'purple',
-  'fuchsia', 'lime', 'teal', 'aqua', 'blue', 'navy', 'black', 'gray'];
-const NAMES: string[] = ['Maia', 'Asher', 'Olivia', 'Atticus', 'Amelia', 'Jack',
-  'Charlotte', 'Theodore', 'Isla', 'Oliver', 'Isabella', 'Jasper',
-  'Cora', 'Levi', 'Violet', 'Arthur', 'Mia', 'Thomas', 'Elizabeth'];
-
-/**
- * @title Basic use of `<table mat-table>`
- */
 @Component({
   selector: 'app-narudzbenica',
   styleUrls: ['narudzbenica.component.css'],
   templateUrl: 'narudzbenica.component.html',
 })
 export class NarudzbenicaComponent  implements OnInit  {
-  displayedColumns: string[] = ['select','id', 'name', 'progress', 'color'];
-  
-  dataSource = new MatTableDataSource<UserData>();
-  selection = new SelectionModel<UserData>(true, []);
+  displayedColumns: string[] = ['select','Proizvod', 'Grupa proizvoda', 'Jedinica Mere', 'Preduzece', 'Cena', 'Stopa PDV', 'PDV'];
 
-  
+  dataSource = new MatTableDataSource<StavkeData>();
+  selection = new SelectionModel<StavkeData>(true, []);
+
+  proizvodi: Proizvod[];
+  stavke: StavkaFakture[];
+  partneri: PoslovniPartner[];
+  narudzbenica: Narudzbenica;
+  stavkeOut: StavkaFakture[];
+  unos = false;
   
 
 
@@ -41,13 +45,24 @@ export class NarudzbenicaComponent  implements OnInit  {
   @ViewChild(MatSort) sort: MatSort;
 
   
-  constructor() {
-    // Create 100 users
-    const users = Array.from({length: 100}, (_, k) => createNewUser(k + 1));
-
-    // Assign the data to the data source for the table to render
-    this.dataSource = new MatTableDataSource(users);
-
+  constructor(
+    private cenovnikService: CenovnikService,
+    private fakturaService: FakturaService,
+  ) {
+    this.narudzbenica = new Narudzbenica();
+  }
+  toggleUnos(){
+    if(this.unos === false){
+      this.unos = true;
+      this.displayedColumns = ['select','Proizvod', 'Grupa proizvoda', 'Jedinica Mere', 'Preduzece', 'Cena', 'Stopa PDV', 'PDV',
+       'Kolicina'];
+      return;
+    }
+    if(this.unos === true){
+      this.unos = false;
+      this.displayedColumns = ['select','Proizvod', 'Grupa proizvoda', 'Jedinica Mere', 'Preduzece', 'Cena', 'Stopa PDV', 'PDV'];
+      return;
+    }
   }
 
     isAllSelected() {
@@ -68,9 +83,32 @@ export class NarudzbenicaComponent  implements OnInit  {
   ngOnInit() {
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
+    this.fakturaService.getStavke().subscribe(
+      data => {
+        this.stavkeOut = data;
+        this.stavke = data;
+        this.narudzbenica.stavke = data;
+        for(let i = 0; i < this.stavke.length; i++){
+          let j = +this.stavke[i].cena * ((+this.stavke[i].stopaPDV) / 100);
+          this.stavke[i].pdv = j.toString();
+        }
+        this.dataSource = new MatTableDataSource(this.stavke);
+        this.dataSource.paginator = this.paginator;
+      }
+    );
+    this.fakturaService.getPartneri().subscribe(
+      data => {
+        this.partneri = data;
+      }
+    )
+
 
   }
-
+  naruci(){
+    this.narudzbenica.stavke = this.stavkeOut;
+    this.fakturaService.naruci(this.narudzbenica).subscribe();
+    this.toggleUnos();
+  }
    applyFilter(filterValue: string) {
     this.dataSource.filter = filterValue.trim().toLowerCase();
 
@@ -81,7 +119,7 @@ export class NarudzbenicaComponent  implements OnInit  {
 
 }
 /** Builds and returns a new User. */
-function createNewUser(id: number): UserData {
+/*function createNewUser(id: number): UserData {
   const name =
       NAMES[Math.round(Math.random() * (NAMES.length - 1))] + ' ' +
       NAMES[Math.round(Math.random() * (NAMES.length - 1))].charAt(0) + '.';
@@ -92,7 +130,7 @@ function createNewUser(id: number): UserData {
     progress: Math.round(Math.random() * 100).toString(),
     color: COLORS[Math.round(Math.random() * (COLORS.length - 1))]
   };
-}
+}*/
 
 
 

@@ -11,6 +11,7 @@ import org.springframework.stereotype.Component;
 import com.poslovna.domain.Cenovnik;
 import com.poslovna.domain.GrupaProizvoda;
 import com.poslovna.domain.JedinicaMere;
+import com.poslovna.domain.PDV;
 import com.poslovna.domain.PoslovnaGodina;
 import com.poslovna.domain.PoslovniPartner;
 import com.poslovna.domain.Preduzece;
@@ -20,12 +21,14 @@ import com.poslovna.domain.Valuta;
 import com.poslovna.service.CenovnikService;
 import com.poslovna.service.GrupaProizvodaService;
 import com.poslovna.service.JedinicaMereService;
+import com.poslovna.service.PdvService;
 import com.poslovna.service.PoslovnaGodinaService;
 import com.poslovna.service.PoslovniPartnerService;
 import com.poslovna.service.PreduzeceService;
 import com.poslovna.service.ProizvodService;
 import com.poslovna.service.StavkaCenovnikaService;
 import com.poslovna.service.ValutaService;
+
 
 @Component
 public class TestData {
@@ -56,21 +59,33 @@ public class TestData {
 	@Autowired
 	private ValutaService valutaService;
 	
+	@Autowired
+	private PdvService pdvService;
+	
 	@PostConstruct
 	private void init() {
+		PDV pdv1 = new PDV();
+		pdv1.setNaziv("Opsti");
+		PDV pdv2 = new PDV();
+		pdv2.setNaziv("Subvencionisani");
+		PDV pdv3 = new PDV();
+		pdv3.setNaziv("Rigorozni"); 
+		pdvService.addPDV(pdv1);
+		pdvService.addPDV(pdv2);
+		pdvService.addPDV(pdv3);
 		
 		GrupaProizvoda gp1 = new GrupaProizvoda();
 		gp1.setNaziv("Elektronika");
-		gp1.setPdv(10);
+		gp1.setPdv(pdv1);
 		GrupaProizvoda gp2 = new GrupaProizvoda();
 		gp2.setNaziv("Hrana");
-		gp2.setPdv(11);
+		gp2.setPdv(pdv2);
 		GrupaProizvoda gp3 = new GrupaProizvoda();
 		gp3.setNaziv("Pice");
-		gp3.setPdv(12);
+		gp3.setPdv(pdv3);
 		GrupaProizvoda gp4 = new GrupaProizvoda();
 		gp4.setNaziv("Gradjevinski materijal");
-		gp4.setPdv(13);
+		gp4.setPdv(pdv1);
 		grupaProizvodaService.add(gp1); 
 		grupaProizvodaService.add(gp2); 
 		grupaProizvodaService.add(gp3); 
@@ -313,18 +328,22 @@ public class TestData {
 		PoslovniPartner pp1 = new PoslovniPartner();
 		pp1.setNaziv("Moj Dom");
 		pp1.setBrojTelefona("02312351");
+		pp1.setVrsta(PoslovniPartner.VrstaPartnera.Kupac);
 		PoslovniPartner pp2 = new PoslovniPartner();
 		pp2.setAdresa("Kosovska 10, Novi Sad");
 		pp2.setNaziv("Quanto");
 		pp2.setBrojTelefona("021132441");
+		pp2.setVrsta(PoslovniPartner.VrstaPartnera.Kupac);
 		PoslovniPartner pp3 = new PoslovniPartner();
 		pp3.setAdresa("Neka 2, Beograd");
 		pp3.setNaziv("Moja Firma");
 		pp3.setBrojTelefona("011312878");
+		pp3.setVrsta(PoslovniPartner.VrstaPartnera.Dobavljac);
 		PoslovniPartner pp4 = new PoslovniPartner();
 		pp4.setAdresa("Cvetna 23, Sr. Kamenica");
 		pp4.setNaziv("Technocore");
 		pp4.setBrojTelefona("02215123");
+		pp4.setVrsta(PoslovniPartner.VrstaPartnera.Dobavljac);
 		poslovniPartnerService.add(pp1);
 		poslovniPartnerService.add(pp2);
 		poslovniPartnerService.add(pp3);
