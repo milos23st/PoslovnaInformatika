@@ -97,7 +97,7 @@ export class CenovnikPComponent implements OnInit {
         this.cenovnici = data;
         this.iterator = Array(data.totalPages).fill(0).map((x, i) => i);
       }
-    )      
+    )
    }
 
    menjaj() {

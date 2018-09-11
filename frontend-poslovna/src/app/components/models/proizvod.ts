@@ -6,7 +6,7 @@ export class Proizvod {
     constructor(
         
         public nazivProizvoda: string,
-        public opis : string,
+        public opis: string,
         public preduzece: Preduzece,
         public grupaProizvod: GrupaProizvoda,
         public jedinicaMere: JedinicaMere,
