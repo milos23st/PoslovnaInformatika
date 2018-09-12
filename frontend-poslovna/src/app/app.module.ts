@@ -79,6 +79,7 @@ import { PreduzecePComponent } from './components/prikaz/preduzece-p/preduzece-p
 import { ValutaPComponent } from './components/prikaz/valuta-p/valuta-p.component';
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -99,7 +100,8 @@ import { ValutaPComponent } from './components/prikaz/valuta-p/valuta-p.componen
     JedinicaMerePComponent,
     PreduzecePComponent,
     SearchPipe,
-    ValutaPComponent
+    ValutaPComponent,
+   
   ],
   imports: [
     BrowserModule,

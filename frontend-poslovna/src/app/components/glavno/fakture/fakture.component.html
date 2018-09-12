@@ -1,37 +1,111 @@
 <!--The content below is only a placeholder and can be replaced.-->
 <div class="divbody">
 
-<div class="container color-dark">
+<div>
   <div class="col">
     <h2>Fakture</h2>
   </div>
  
 </div>
-<div class="container color-light">
-  <div class="col">
-    <p class="sm">Use this form below to log in to your account.</p>
+<div>
+    <div class="col">
+      <label>Izaberite poslovnu godinu: </label>
+      <select  [(ngModel)]="godina" name="pg" #pg="ngModel" (ngModelChange)="changeGodina()">
+      <option *ngFor="let god of godine" [ngValue]="+god.id">{{god.godina}}</option>
+      </select><br>
+    </div>
+</div>
 
-    <form>
+  <div class="mat-elevation-z8">
+    <table mat-table [dataSource]="dataSource" matSort>
+      
+     <!-- Checkbox Column -->
+    <ng-container matColumnDef="select">
+      <th mat-header-cell *matHeaderCellDef>
+        <mat-checkbox (change)="$event ? masterToggle() : null"
+                      [checked]="selection.hasValue() && isAllSelected()"
+                      [indeterminate]="selection.hasValue() && !isAllSelected()">
+        </mat-checkbox>
+      </th>
+      <td mat-cell *matCellDef="let row">
+        <mat-checkbox (click)="$event.stopPropagation()"
+                      (change)="$event ? selection.toggle(row) : null"
+                      [checked]="selection.isSelected(row)">
+        </mat-checkbox>
+      </td>
+    </ng-container>
+    
+      <!-- Progress Column -->
+      <ng-container matColumnDef="brojFakture">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Broj Fakture </th>
+        <td mat-cell *matCellDef="let row"> {{row.brojFakture}} </td>
+      </ng-container>
+  
+      <!-- Name Column -->
+      <ng-container matColumnDef="datumFakture">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Datum Fakture </th>
+        <td mat-cell *matCellDef="let row"> {{row.datumFakture}} </td>
+      </ng-container>
+  
+      
+  
+  
+      <!-- Color Column -->
+      <ng-container matColumnDef="datumValute">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Datum Valute </th>
+        <td mat-cell *matCellDef="let row" [style.color]="row.color"> {{row.datumValute}} </td>
+      </ng-container>
+  
+      <ng-container matColumnDef="ukupanRabat">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Ukupan Rabat </th>
+        <td mat-cell *matCellDef="let row"> {{row.ukupanRabat}} </td>
+      </ng-container>
+  
+      <ng-container matColumnDef="bezPDV">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Bez PDV </th>
+        <td mat-cell *matCellDef="let row"> {{row.bezPDV}} </td>
+      </ng-container>
+      
+      <!-- Progress Column -->
+      
+  
+      <!-- Name Column -->
+      <ng-container matColumnDef="ukupanPorez">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Ukupan Porez </th>
+        <td mat-cell *matCellDef="let row"> {{row.ukupanPorez}} </td>
+      </ng-container>
+  
+      
+  
+  
+      <ng-container matColumnDef="iznosFakture">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Ukupan Iznos </th>
+        <td mat-cell *matCellDef="let row" [style.color]="row.color"> {{row.iznosFakture}} </td>
+      </ng-container>
 
-      <div class="form-group">
-          <input type="email" class="form-control" placeholder="Enter email..." name="email" required="required">
-      </div>
-
-      <div class="form-group">
-        <input type="password" class="form-control" name="password" placeholder="Enter password..." required="required">
-      </div>
-
-      <div class="form-group">
-        <input type="submit" class="btn" value="Submit">
-      <p>Don't have an account? <span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span>  <a routerLink="/registration">Sign Up</a></p>
-
-      </div>
-    </form>
+      <ng-container matColumnDef="dugmici">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Akcije </th>
+          <td mat-cell *matCellDef="let row; let i = index" [style.color]="row.color">
+             <a class="btn btn-custom mb-1"
+             href="{{getIzvestaj(i)}}"
+             download="report.pdf">
+              
+               Preuzmi izvestaj
+           </a>
+          </td>
+        </ng-container>
+  
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns">
+      </tr>
+      
+    </table>
+  
+    <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
   </div>
   
 </div>
 
-</div>
 
 
 
