@@ -12,6 +12,7 @@ export class GrupaProizvodaComponent implements OnInit {
 
   grupaProizvoda = new GrupaProizvoda('', '', this.grupaProizvoda);
   pdvI: Pdv[];
+  broj: number;
 
   constructor(
     private dataService: DataService
@@ -29,6 +30,7 @@ export class GrupaProizvodaComponent implements OnInit {
   }
 
   addGrupaProizvoda() {
+    this.grupaProizvoda.pdv = this.pdvI[this.broj];
     this.dataService.addGrupaProizvoda(this.grupaProizvoda).subscribe(
       data => {
         console.log('uspesno')

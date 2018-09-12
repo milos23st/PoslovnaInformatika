@@ -36,7 +36,7 @@ public class GrupaProizvodaController {
 		grupa.setId(dto.getId());
 		grupa.setNaziv(dto.getNaziv());
 		grupa.setOpis(dto.getOpis());
-		//grupa.setPdv(dto.getPdv());
+		grupa.setPdv(dto.getPdv());
 		service.add(grupa);
 		return new ResponseEntity<>(grupa, HttpStatus.OK);
 	}

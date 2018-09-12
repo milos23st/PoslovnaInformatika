@@ -36,9 +36,10 @@
   </mat-select>
 </mat-form-field>
 -->
+
 <label>Izaberite pdv:</label><br>
- <select placeholder="Birajte PDV" [(ngModel)]="selectedCenovnik" name="selectedCenovnik" #selectedCenovnik1="ngModel">
-    <option *ngFor="let pdv of pdvI" [ngValue]="pdv.id">
+ <select placeholder="Birajte PDV" [(ngModel)]="broj" name="selectedCenovnik" #selectedCenovnik1="ngModel">
+    <option *ngFor="let pdv of pdvI; let i = index" [ngValue]="i">
       {{pdv.naziv}}
       1
     </option>

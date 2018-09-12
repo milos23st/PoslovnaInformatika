@@ -2,6 +2,8 @@ package com.poslovna.dto;
 
 import javax.persistence.Column;
 
+import com.poslovna.domain.PDV;
+
 public class GrupaProizvodaDTO {
 	
 	private Long id;
@@ -10,11 +12,11 @@ public class GrupaProizvodaDTO {
 
     private String opis;
     
-    private double pdv;
+    private PDV pdv;
     
     public GrupaProizvodaDTO() {}
 
-	public GrupaProizvodaDTO(Long id, String naziv, String opis, double pdv) {
+	public GrupaProizvodaDTO(Long id, String naziv, String opis, PDV pdv) {
 		super();
 		this.id = id;
 		this.naziv = naziv;
@@ -46,13 +48,15 @@ public class GrupaProizvodaDTO {
 		this.opis = opis;
 	}
 
-	public double getPdv() {
+	public PDV getPdv() {
 		return pdv;
 	}
 
-	public void setPdv(double pdv) {
+	public void setPdv(PDV pdv) {
 		this.pdv = pdv;
 	}
+
+	
     
 	
    
