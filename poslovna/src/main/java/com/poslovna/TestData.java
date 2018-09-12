@@ -352,12 +352,15 @@ public class TestData {
 		PoslovnaGodina pg1 = new PoslovnaGodina();
 		pg1.setZakljucena(true);
 		pg1.setPreduzece(p);
+		pg1.setGodina(2016);
 		PoslovnaGodina pg2 = new PoslovnaGodina();
 		pg2.setZakljucena(true);
 		pg2.setPreduzece(p);
+		pg2.setGodina(2017);
 		PoslovnaGodina pg3 = new PoslovnaGodina();
 		pg3.setZakljucena(false);
 		pg3.setPreduzece(p);
+		pg3.setGodina(2018);
 		poslovnaGodinaService.add(pg1);
 		poslovnaGodinaService.add(pg2);
 		poslovnaGodinaService.add(pg3);

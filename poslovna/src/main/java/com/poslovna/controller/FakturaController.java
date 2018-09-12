@@ -26,6 +26,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.poslovna.domain.Cenovnik;
 import com.poslovna.domain.IzlaznaFaktura;
 import com.poslovna.domain.PDV;
+import com.poslovna.domain.PoslovnaGodina;
 import com.poslovna.domain.PoslovniPartner;
 import com.poslovna.domain.Preduzece;
 import com.poslovna.domain.Proizvod;
@@ -71,6 +72,13 @@ public class FakturaController {
 	
 	@Autowired
 	private StavkaCenovnikaService stavkaCenovnikaService;
+	
+	@RequestMapping(method = RequestMethod.GET,value="/fakture/{id:\\d+}")
+	public ResponseEntity<ArrayList<IzlaznaFaktura>> getFaktureIzGodine(@PathVariable Long id)
+	{
+		PoslovnaGodina pg = poslovnaGodinaService.findOne(id);
+		return new ResponseEntity<ArrayList<IzlaznaFaktura>>(fakturaService.getFaktureIzGodine(pg), HttpStatus.OK);
+	}
 	
 	@GetMapping("/stavke")
 	public ResponseEntity<List<StavkaFaktureDTO>> getStavke() {
