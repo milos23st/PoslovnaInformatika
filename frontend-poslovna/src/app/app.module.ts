@@ -77,6 +77,7 @@ import { PreduzeceComponent } from './components/unos/preduzece/preduzece.compon
 import { JedinicaMerePComponent } from './components/prikaz/jedinica-mere-p/jedinica-mere-p.component';
 import { PreduzecePComponent } from './components/prikaz/preduzece-p/preduzece-p.component';
 import { ValutaPComponent } from './components/prikaz/valuta-p/valuta-p.component';
+import { PdvPComponent } from './components/prikaz/pdv-p/pdv-p.component';
 
 
 
@@ -101,7 +102,8 @@ import { ValutaPComponent } from './components/prikaz/valuta-p/valuta-p.componen
     PreduzecePComponent,
     SearchPipe,
     ValutaPComponent,
-   
+    PdvPComponent
+
   ],
   imports: [
     BrowserModule,
@@ -118,7 +120,7 @@ import { ValutaPComponent } from './components/prikaz/valuta-p/valuta-p.componen
     MatTableModule,
 
     MatDatepickerModule,
-    
+
 
     MatNativeDateModule,
     ReactiveFormsModule,

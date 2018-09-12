@@ -26,7 +26,7 @@ export class JedinicaMerePComponent implements OnInit {
 */
 
   dataSource = new JedinicaMereDataSource(this.dataService);
-  displayedColumns = ['naziv','skracenica'];
+  displayedColumns = ['naziv', 'skracenica'];
 
   constructor(private dataService: DataService) { }
 
@@ -39,10 +39,10 @@ export class JedinicaMereDataSource extends DataSource<any> {
   constructor(private dataService: DataService) {
     super();
   }
-  
+
   connect(): Observable<JedinicaMere[]> {
     return this.dataService.getJedMere();
- 
+
   }
   disconnect() {}
 }

@@ -11,19 +11,20 @@
   <div class="col">
     <p class="sm">Dodavanje grupe proizvoda.</p>
 
-    <form>
+    <form name="form" (ngSubmit)="addForm.form.valid && addGrupaProizvoda()" class="register-form" #addForm="ngForm">
 
-       <mat-form-field class="matf">
-    <input matInput placeholder="Naziv" name="naziv">
+       <mat-form-field class="matf" [ngClass]="{ 'has-error': addForm.submitted && !naziv.valid }">
+    <input matInput placeholder="Naziv" name="naziv" [(ngModel)]="grupaProizvoda.naziv" #naziv="ngModel">
       </mat-form-field>
 
-      <mat-form-field class="matf">
-    <input matInput placeholder="Opis" name="skracenica">
+      <mat-form-field class="matf" [ngClass]="{ 'has-error': addForm.submitted && !opis.valid }">
+    <input matInput placeholder="Opis" name="opis" [(ngModel)]="grupaProizvoda.opis" #opis="ngModel">
       </mat-form-field>
-
+<!--
       <mat-form-field>
-  <mat-select placeholder="Birajte PDV">
-    <mat-option>
+  <mat-select placeholder="Birajte PDV" [(ngModel)]="selectedCenovnik" name="selectedCenovnik" #selectedCenovnik1="ngModel">
+    <mat-option *ngFor="let pdv of pdvI" [ngValue]="pdv.id">
+      {{pdv.naziv}}
       1
     </mat-option>
     <mat-option>
@@ -34,8 +35,16 @@
     </mat-option>
   </mat-select>
 </mat-form-field>
-
-      
+-->
+<label>Izaberite pdv:</label><br>
+ <select placeholder="Birajte PDV" [(ngModel)]="selectedCenovnik" name="selectedCenovnik" #selectedCenovnik1="ngModel">
+    <option *ngFor="let pdv of pdvI" [ngValue]="pdv.id">
+      {{pdv.naziv}}
+      1
+    </option>
+    </select>
+      <br>
+      <br>
       <div class="form-group">
         <input type="submit" class="btn" value="Submit">
       </div>

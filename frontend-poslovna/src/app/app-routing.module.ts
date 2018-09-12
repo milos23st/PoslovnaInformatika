@@ -17,6 +17,7 @@ import { ValutaComponent } from './components/unos/valuta/valuta.component';
 import { JedinicaMerePComponent } from './components/prikaz/jedinica-mere-p/jedinica-mere-p.component';
 import { PreduzecePComponent } from './components/prikaz/preduzece-p/preduzece-p.component';
 import { ValutaPComponent } from './components/prikaz/valuta-p/valuta-p.component';
+import { PdvPComponent } from './components/prikaz/pdv-p/pdv-p.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent},
@@ -33,16 +34,17 @@ const routes: Routes = [
   { path: 'jedinicaMere1', component: JedinicaMerePComponent},
   { path: 'preduzece1', component: PreduzecePComponent},
   { path: 'valute1', component: ValutaPComponent},
-  
+  { path: 'pdv1', component: PdvPComponent},
 
-//unos
+// unos
+
   { path: 'jedinicaMere', component: JedinicaMereComponent},
   { path: 'pdv', component : PdvComponent },
   { path: 'grupaProizvoda', component : GrupaProizvodaComponent },
   { path: 'poslovnaGodina', component : PoslovnaGodinaComponent },
   { path: 'preduzece', component : PreduzeceComponent },
   { path: 'valuta', component : ValutaComponent },
-  
+
 
 
 ];

@@ -1,7 +1,7 @@
 export class Preduzece {
 
     constructor(
-        
+
         public nazivPreduzeca: string,
         public pib: string,
         public email: string,
@@ -9,5 +9,5 @@ export class Preduzece {
         public id?: string
 
 
-    ){}
+    ) {}
 }

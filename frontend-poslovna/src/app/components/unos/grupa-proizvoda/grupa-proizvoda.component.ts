@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { DataService } from '../../../data.service';
+import { Pdv } from './../../models/pdv';
+import { GrupaProizvoda } from '../../models/grupa-proizvoda';
 
 @Component({
   selector: 'app-grupa-proizvoda',
@@ -7,9 +10,33 @@ import { Component, OnInit } from '@angular/core';
 })
 export class GrupaProizvodaComponent implements OnInit {
 
-  constructor() { }
+  grupaProizvoda = new GrupaProizvoda('', '', this.grupaProizvoda);
+  pdvI: Pdv[];
+
+  constructor(
+    private dataService: DataService
+  ) { }
 
   ngOnInit() {
+
+       this.dataService.getPdv().subscribe(
+      (data: any) => {
+        this.pdvI = data;
+      }
+    );
+
+
+  }
+
+  addGrupaProizvoda() {
+    this.dataService.addGrupaProizvoda(this.grupaProizvoda).subscribe(
+      data => {
+        console.log('uspesno')
+      },
+      error => {
+        console.log('neuspesno')
+      }
+    );
   }
 
 }

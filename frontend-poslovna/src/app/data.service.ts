@@ -6,6 +6,8 @@ import { Cenovnik } from './components/models/cenovnik';
 import { JedinicaMere } from './components/models/jedinica-mere';
 import { Preduzece } from './components/models/preduzece';
 import { Valuta } from './components/models/Valuta';
+import { Pdv } from './components/models/pdv';
+import { GrupaProizvoda } from './components/models/grupa-proizvoda';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': 'true' })
@@ -17,17 +19,21 @@ const httpOptions = {
 
 export class DataService {
 
-  
+
 
   private heroesUrl = 'http://localhost:1234/api/cenovnik';
 
   private jedinicaMereUrl = 'http://localhost:1234/jedinicaMere';
-  
+
   private preduzeceUrl = 'http://localhost:1234/preduzece';
 
   private valutaUrl = 'http://localhost:1234/valuta';
 
-  
+  private pdvUrl = 'http://localhost:1234/pdv';
+
+  private grupaUrl = 'http://localhost:1234/grupa';
+
+
 
   getHeroes (): Observable<CenovniciComponent[]> {
   return this.http.get<CenovniciComponent[]>(this.heroesUrl);
@@ -46,20 +52,20 @@ export class DataService {
   }
 
   getJedMere(): Observable<JedinicaMere[]> {
-    return this.http.get<JedinicaMere[]>(this.jedinicaMereUrl +'/getAll');
+    return this.http.get<JedinicaMere[]>(this.jedinicaMereUrl + '/getAll');
 
   }
 // jedinica mere- kraj
-  
-  
+
+
 // preduzece
   addPreduzece(preduzece: Preduzece): Observable<Preduzece> {
       return this.http.post<Preduzece>(this.preduzeceUrl, preduzece, httpOptions);
     }
   getPreduzece(): Observable<Preduzece[]> {
-      return this.http.get<Preduzece[]>(this.preduzeceUrl + '/getAll')
+      return this.http.get<Preduzece[]>(this.preduzeceUrl + '/getAll');
   }
-  
+
 // preduzece- kraj
 
 // valuta - pocetak
@@ -69,12 +75,40 @@ export class DataService {
   }
 
   getValute(): Observable<Valuta[]> {
-    return this.http.get<Valuta[]>(this.valutaUrl +'/getAll');
+    return this.http.get<Valuta[]>(this.valutaUrl + '/getAll');
 
   }
 
-// valuta - kraj 
+// valuta - kraj
+
+// pdv - pocetak
+
+ addPdv(pdv: Pdv): Observable<Pdv> {
+    return this.http.post<Pdv>(this.pdvUrl, pdv, httpOptions);
+  }
+
+  getPdv(): Observable<Pdv[]> {
+    return this.http.get<Pdv[]>(this.pdvUrl + '/getAll');
+
+  }
+
+// pdv - kraj
+
+// grupaProizvoda - pocetak
+
+  addGrupaProizvoda(grupaProizvoda: GrupaProizvoda): Observable<GrupaProizvoda> {
+    return this.http.post<GrupaProizvoda>(this.grupaUrl, grupaProizvoda, httpOptions);
+  }
+
+  getGrupeProizvoda(): Observable<GrupaProizvoda[]> {
+    return this.http.get<GrupaProizvoda[]>(this.grupaUrl + '/getAll');
+
+  }
+
+// grupaProizvoda - kraj
+
   constructor(private http: HttpClient) { }
 }
+
 
 
