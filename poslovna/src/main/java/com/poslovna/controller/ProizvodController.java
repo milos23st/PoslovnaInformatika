@@ -46,12 +46,12 @@ public class ProizvodController {
 	public ResponseEntity<?> add(@RequestBody ProizvodDTO dto){
 			
 		Proizvod p = new Proizvod();
-		p.setGrupaProizvod(grupaService.getById(dto.getGrupaProizvodId()));
+		p.setGrupaProizvod(grupaService.getById(dto.getGrupaProizvod().getId()));
 		p.setId(dto.getId());
-		p.setJedinicaMere(jedinicaService.getById(dto.getJedinicaMereId()));
+		p.setJedinicaMere(jedinicaService.getById(dto.getJedinicaMere().getId()));
 		p.setNazivProizvoda(dto.getNazivProizvoda());
 		p.setOpis(dto.getOpis());
-		p.setPreduzece(preduzeceService.getById(dto.getPreduzeceId()));
+		p.setPreduzece(preduzeceService.getById(dto.getPreduzece().getId()));
 		Proizvod retVal = proizvodService.add(p);
 		return new ResponseEntity<>(retVal, HttpStatus.OK);
 	}
@@ -75,12 +75,12 @@ public class ProizvodController {
 	@RequestMapping(method = RequestMethod.PUT)
 	public ResponseEntity<?> edit(@RequestBody ProizvodDTO dto) {
 		Proizvod p = proizvodService.getById(dto.getId());
-		p.setGrupaProizvod(grupaService.getById(dto.getGrupaProizvodId()));
+		p.setGrupaProizvod(grupaService.getById(dto.getGrupaProizvod().getId()));
 		p.setId(dto.getId());
-		p.setJedinicaMere(jedinicaService.getById(dto.getJedinicaMereId()));
+		p.setJedinicaMere(jedinicaService.getById(dto.getJedinicaMere().getId()));
 		p.setNazivProizvoda(dto.getNazivProizvoda());
 		p.setOpis(dto.getOpis());
-		p.setPreduzece(preduzeceService.getById(dto.getPreduzeceId()));
+		p.setPreduzece(preduzeceService.getById(dto.getPreduzece().getId()));
 		Proizvod retVal = proizvodService.add(p);
 		return new ResponseEntity<>(retVal, HttpStatus.OK);
 	}

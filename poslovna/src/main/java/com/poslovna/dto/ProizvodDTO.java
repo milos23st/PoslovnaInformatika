@@ -14,24 +14,56 @@ public class ProizvodDTO {
 
 	private String opis;
 
-	private Long preduzeceId;
-
-	private Long grupaProizvodId;
-
-	private Long jedinicaMereId;
+	private Preduzece preduzece;
+	
+	private GrupaProizvoda grupaProizvod;
+	
+	private JedinicaMere jedinicaMere;
 	
 	public ProizvodDTO() {}
 
-	public ProizvodDTO(Long id, String nazivProizvoda, String opis, Long preduzeceId, Long grupaProizvodId,
-			Long jedinicaMereId) {
+	
+	public ProizvodDTO(Long id, String nazivProizvoda, String opis, Preduzece preduzece, GrupaProizvoda grupaProizvod,
+			JedinicaMere jedinicaMere) {
 		super();
 		this.id = id;
 		this.nazivProizvoda = nazivProizvoda;
 		this.opis = opis;
-		this.preduzeceId = preduzeceId;
-		this.grupaProizvodId = grupaProizvodId;
-		this.jedinicaMereId = jedinicaMereId;
+		this.preduzece = preduzece;
+		this.grupaProizvod = grupaProizvod;
+		this.jedinicaMere = jedinicaMere;
 	}
+
+	
+	public Preduzece getPreduzece() {
+		return preduzece;
+	}
+
+
+	public void setPreduzece(Preduzece preduzece) {
+		this.preduzece = preduzece;
+	}
+
+
+	public GrupaProizvoda getGrupaProizvod() {
+		return grupaProizvod;
+	}
+
+
+	public void setGrupaProizvod(GrupaProizvoda grupaProizvod) {
+		this.grupaProizvod = grupaProizvod;
+	}
+
+
+	public JedinicaMere getJedinicaMere() {
+		return jedinicaMere;
+	}
+
+
+	public void setJedinicaMere(JedinicaMere jedinicaMere) {
+		this.jedinicaMere = jedinicaMere;
+	}
+
 
 	public Long getId() {
 		return id;
@@ -57,29 +89,7 @@ public class ProizvodDTO {
 		this.opis = opis;
 	}
 
-	public Long getPreduzeceId() {
-		return preduzeceId;
-	}
-
-	public void setPreduzeceId(Long preduzeceId) {
-		this.preduzeceId = preduzeceId;
-	}
-
-	public Long getGrupaProizvodId() {
-		return grupaProizvodId;
-	}
-
-	public void setGrupaProizvodId(Long grupaProizvodId) {
-		this.grupaProizvodId = grupaProizvodId;
-	}
-
-	public Long getJedinicaMereId() {
-		return jedinicaMereId;
-	}
-
-	public void setJedinicaMereId(Long jedinicaMereId) {
-		this.jedinicaMereId = jedinicaMereId;
-	}
+	
 	
 	
 

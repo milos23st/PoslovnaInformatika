@@ -4,17 +4,17 @@
     <brojFakture>Broj fakture: 0</brojFakture>
     <broj>0</broj>
     <datumFakture>2018-09-13T00:00:00+02:00</datumFakture>
+    <datumFaktureLong>1536852495308</datumFaktureLong>
     <datumValute>2018-09-13T00:00:00+02:00</datumValute>
-    <ukupanRabat>45.92700000000001</ukupanRabat>
-    <bezPDV>8054.073</bezPDV>
-    <ukupanPorez>805.4073</ukupanPorez>
+    <ukupanRabat>161.728</ukupanRabat>
+    <bezPDV>15038.272</bezPDV>
+    <ukupanPorez>1503.8272</ukupanPorez>
     <ukupnoRobaIUsluge>0.0</ukupnoRobaIUsluge>
-    <iznosFakture>8859.4803</iznosFakture>
+    <iznosFakture>16542.0992</iznosFakture>
     <poslovniPartner>
-        <adresa>Kosovska 10, Novi Sad</adresa>
-        <brojTelefona>021132441</brojTelefona>
-        <id>35</id>
-        <naziv>Quanto</naziv>
+        <brojTelefona>02312351</brojTelefona>
+        <id>34</id>
+        <naziv>Moj Dom</naziv>
         <vrsta>Kupac</vrsta>
     </poslovniPartner>
     <poslovnaGodina>
