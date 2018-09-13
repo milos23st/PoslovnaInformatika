@@ -8,7 +8,7 @@ import java.util.List;
 
 public class CenovnikDTO {
 	
-	private Date datum;
+	private Date datumVazenja;
 	
 	private List<StavkaCenovnikaDTO> stavke;
 	
@@ -16,12 +16,12 @@ public class CenovnikDTO {
 		super();
 	}
 
-	public Date getDatum() {
-		return datum;
+	public Date getDatumVazenja() {
+		return datumVazenja;
 	}
 
-	public void setDatum(Date datum) {
-		this.datum = datum;
+	public void setDatumVazenja(Date datum) {
+		this.datumVazenja = datum;
 	}
 
 	public List<StavkaCenovnikaDTO> getStavke() {

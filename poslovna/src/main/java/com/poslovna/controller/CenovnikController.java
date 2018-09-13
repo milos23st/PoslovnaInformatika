@@ -56,7 +56,7 @@ public class CenovnikController {
 	@PostMapping("/newCenovnik")
 	public ResponseEntity<?> addNewCenovnik(@RequestBody CenovnikDTO dto){
 		Cenovnik c = new Cenovnik();
-		c.setDatumVazenja(dto.getDatum());
+		c.setDatumVazenja(dto.getDatumVazenja());
 		cenovnikService.add(c);
 		return new ResponseEntity<>(c, HttpStatus.OK);
 	}
