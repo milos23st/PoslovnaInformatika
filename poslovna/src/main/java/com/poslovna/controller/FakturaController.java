@@ -1,6 +1,13 @@
 package com.poslovna.controller;
 
+import java.io.BufferedInputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.io.StringWriter;
+import java.net.URLConnection;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collections;
@@ -16,6 +23,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.util.Base64Utils;
+import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -42,6 +50,7 @@ import com.poslovna.service.PreduzeceService;
 import com.poslovna.service.ProizvodService;
 import com.poslovna.service.StavkaCenovnikaService;
 import com.poslovna.service.StavkaFaktureService;
+
 
 
 
@@ -72,6 +81,58 @@ public class FakturaController {
 	
 	@Autowired
 	private StavkaCenovnikaService stavkaCenovnikaService;
+	
+	
+	@RequestMapping(method = RequestMethod.GET,value="/export/fakture/{id}")
+	public void getXml(@PathVariable Long id, HttpServletResponse response)
+	{
+		IzlaznaFaktura novaFaktura = fakturaService.getById(id);
+		long derp =5;
+		try
+		{
+			JAXBContext context = JAXBContext.newInstance(IzlaznaFaktura.class);
+			Marshaller marshaller = context.createMarshaller();
+			marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
+
+			StringWriter sw = new StringWriter();
+			marshaller.marshal(novaFaktura, sw);
+
+		    HashMap<String, String> retVal = new HashMap<>();
+		    byte[] a = sw.toString().getBytes();
+		    OutputStream out = new FileOutputStream("out.xml");
+			out.write(a);
+			out.close();
+
+			File file = new File(System.getProperty("user.dir") + System.getProperty("file.separator") + "out.xml");
+			if (file.exists()) {
+
+				//get the mimetype
+				String mimeType = URLConnection.guessContentTypeFromName(file.getName());
+				if (mimeType == null) {
+					//unknown mimetype so set the mimetype to application/octet-stream
+					mimeType = "application/octet-stream";
+				}
+
+				response.setContentType(mimeType);
+				response.setHeader("Content-Disposition", String.format("attachment; filename=\"" + file.getName() + "\""));
+
+				 //Here we have mentioned it to show as attachment
+				 //response.setHeader("Content-Disposition", String.format("attachment; filename=\"" + file.getName() + "\""));
+
+				response.setContentLength((int) file.length());
+
+				InputStream inputStream = new BufferedInputStream(new FileInputStream(file));
+
+				FileCopyUtils.copy(inputStream, response.getOutputStream());
+
+			}
+
+	    } catch (Exception ex) {
+
+	        System.out.println(ex.toString());
+	    }
+		
+	}
 	
 	@RequestMapping(method = RequestMethod.GET,value="/fakture/{id:\\d+}")
 	public ResponseEntity<ArrayList<IzlaznaFaktura>> getFaktureIzGodine(@PathVariable Long id)
@@ -121,35 +182,6 @@ public class FakturaController {
 		return new ResponseEntity<Long>(idNoveFaktura, HttpStatus.OK);
 	}
 	
-	@RequestMapping(method = RequestMethod.GET,value="/export/fakture/{id}")
-	public ResponseEntity<HashMap<String,String>> postFakture(@PathVariable Long id, HttpServletResponse response)
-	{
-		IzlaznaFaktura novaFaktura = fakturaService.getById(id);
-		long derp =5;
-		try
-		{
-
-
-
-
-			JAXBContext context = JAXBContext.newInstance(IzlaznaFaktura.class);
-			Marshaller marshaller = context.createMarshaller();
-			marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
-
-			StringWriter sw = new StringWriter();
-			marshaller.marshal(novaFaktura, sw);
-
-		    HashMap<String, String> retVal = new HashMap<>();
-		    retVal.put("faktura", Base64Utils.encodeToString(sw.toString().getBytes()));
-
-		    return new ResponseEntity<HashMap<String, String>>(retVal, HttpStatus.OK);
-
-	    } catch (Exception ex) {
-
-	        System.out.println(ex.toString());
-	    }
-		return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-	}
 	
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
 	public ResponseEntity<?> getFaktura(@PathVariable Long id) {
@@ -197,6 +229,7 @@ public class FakturaController {
 		final Calendar cal = Calendar.getInstance();
 
 		faktura.setDatumFakture(cal.getTime());
+		faktura.setDatumFaktureLong(cal.getTimeInMillis());
 		Date date = new Date();
 		cal.setTime(date);   // assigns calendar to given date
 		int sat =cal.get(Calendar.HOUR_OF_DAY); // gets hour in 24h format

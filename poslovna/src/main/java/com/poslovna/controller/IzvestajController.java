@@ -4,6 +4,7 @@ import java.io.BufferedInputStream;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -83,13 +84,36 @@ public class IzvestajController {
 	}
 
 	@GetMapping(path = "/KIF/{beginDate}/{endDate}")
-	public ResponseEntity<?> getKIF(@PathVariable Long beginDate, @PathVariable Long endDate) {
+	public void getKIF(@PathVariable Long beginDate, @PathVariable Long endDate, HttpServletResponse response) throws IOException {
 		String jrxml = libPath + "KIF.jrxml";
 		String jasper = libPath + "KIF.jasper";
 		HashMap<String, Object> hm = new HashMap<>();
 		hm.put("beginDate", beginDate);
 		hm.put("endDate", endDate);
-		return new ResponseEntity<>(makeReport(jrxml, jasper, hm), HttpStatus.OK);
+		makeReport(jrxml, jasper, hm);
+		File file = new File(System.getProperty("user.dir") + System.getProperty("file.separator") + "out.pdf");
+		if (file.exists()) {
+
+			//get the mimetype
+			String mimeType = URLConnection.guessContentTypeFromName(file.getName());
+			if (mimeType == null) {
+				//unknown mimetype so set the mimetype to application/octet-stream
+				mimeType = "application/octet-stream";
+			}
+
+			response.setContentType(mimeType);
+			response.setHeader("Content-Disposition", String.format("attachment; filename=\"" + file.getName() + "\""));
+
+			 //Here we have mentioned it to show as attachment
+			 //response.setHeader("Content-Disposition", String.format("attachment; filename=\"" + file.getName() + "\""));
+
+			response.setContentLength((int) file.length());
+
+			InputStream inputStream = new BufferedInputStream(new FileInputStream(file));
+
+			FileCopyUtils.copy(inputStream, response.getOutputStream());
+
+		}
 	}
 
 	private HashMap<String,String> makeReport(String reportFile, String jasper, Map<String, Object> hm) {

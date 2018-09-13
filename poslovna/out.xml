@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<faktura>
+    <id>1</id>
+    <brojFakture>Broj fakture: 0</brojFakture>
+    <broj>0</broj>
+    <datumFakture>2018-09-13T00:00:00+02:00</datumFakture>
+    <datumValute>2018-09-13T00:00:00+02:00</datumValute>
+    <ukupanRabat>45.92700000000001</ukupanRabat>
+    <bezPDV>8054.073</bezPDV>
+    <ukupanPorez>805.4073</ukupanPorez>
+    <ukupnoRobaIUsluge>0.0</ukupnoRobaIUsluge>
+    <iznosFakture>8859.4803</iznosFakture>
+    <poslovniPartner>
+        <adresa>Kosovska 10, Novi Sad</adresa>
+        <brojTelefona>021132441</brojTelefona>
+        <id>35</id>
+        <naziv>Quanto</naziv>
+        <vrsta>Kupac</vrsta>
+    </poslovniPartner>
+    <poslovnaGodina>
+        <godina>2018</godina>
+        <id>40</id>
+        <preduzece>
+            <adresa>Dunavska 31, Novi Sad</adresa>
+            <email>mojdom@gmail.com</email>
+            <id>1</id>
+            <nazivPreduzeca>Moj Dom</nazivPreduzeca>
+            <pib>0210483328</pib>
+        </preduzece>
+        <zakljucena>false</zakljucena>
+    </poslovnaGodina>
+    <preduzece>
+        <adresa>Dunavska 31, Novi Sad</adresa>
+        <email>mojdom@gmail.com</email>
+        <id>1</id>
+        <nazivPreduzeca>Moj Dom</nazivPreduzeca>
+        <pib>0210483328</pib>
+    </preduzece>
+</faktura>

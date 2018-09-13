@@ -34,6 +34,8 @@ public class IzlaznaFaktura {
 	@Temporal(TemporalType.DATE)
 	private Date datumFakture;
 	
+	private long datumFaktureLong;
+	
 	@Temporal(TemporalType.DATE)
 	private Date datumValute;
 	
@@ -70,6 +72,14 @@ public class IzlaznaFaktura {
 		Stornirana
 	}
 	
+	
+	public long getDatumFaktureLong() {
+		return datumFaktureLong;
+	}
+
+	public void setDatumFaktureLong(long datumFaktureLong) {
+		this.datumFaktureLong = datumFaktureLong;
+	}
 
 	public String getBrojFakture() {
 		return brojFakture;
