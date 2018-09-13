@@ -9,6 +9,7 @@ import { PoslovnaGodina } from '../models/poslovna-godina';
 import { Izvestaj } from '../models/izvestaj';
 import { Proizvod } from '../models/proizvod';
 import { StavkaCenovnika } from '../models/stavkacenovnika';
+import { Cenovnik } from '../models/cenovnik';
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-type': 'application/json'})
 };
@@ -51,5 +52,8 @@ export class FakturaService {
   }
   addStavkaCenovnika(stavka: StavkaCenovnika, id: number): Observable<StavkaCenovnika>{
     return this.http.post<StavkaCenovnika>('http://localhost:1234/api/cenovnik/newStavka/' + id, stavka, httpOptions);
+  }
+  addCenovnik(cenovnik: Cenovnik): Observable<Cenovnik>{
+    return this.http.post<Cenovnik>('http://localhost:1234/api/cenovnik/newCenovnik' , cenovnik, httpOptions);
   }
 }

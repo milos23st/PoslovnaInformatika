@@ -13,46 +13,20 @@
 
     <form>
 
-      <mat-form-field>
-  <input matInput [matDatepicker]="picker" placeholder="Datum vazenja">
-  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-  <mat-datepicker #picker></mat-datepicker>
-</mat-form-field>
-<br>
-
-     <mat-form-field>
-  <mat-select placeholder="Birajte Valutu">
-    <mat-option>
-      1
-    </mat-option>
-    <mat-option>
-      2
-    </mat-option>
-    <mat-option>
-      3
-    </mat-option>
-  </mat-select>
-</mat-form-field>
-<br>
-      <mat-form-field>
-  <mat-select placeholder="Birajte Preduzece">
-    <mat-option>
-      1
-    </mat-option>
-    <mat-option>
-      2
-    </mat-option>
-    <mat-option>
-      3
-    </mat-option>
-  </mat-select>
-</mat-form-field>
-
-<br>
-
       <div class="form-group">
-        <input type="submit" class="btn" value="Submit">
-      </div>
+				<label for="fromDateInput">Datum vazenja:</label>
+				<input type="date"
+					id="fromDateInput"
+					class="form-control"
+          [(ngModel)]="datum" name="pg1" #pg1="ngModel"
+					required
+					autofocus/>
+			</div>
+<br>
+<br>
+
+<button mat-raised-button (click)="addCenovnik()">
+  <i class="fas fa-plus-circle">Dodaj</i></button><br><br>
     </form>
   </div>
 
