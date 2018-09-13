@@ -82,6 +82,7 @@ import { KnjigaFakturaComponent } from './components/knjiga-faktura/knjiga-faktu
 import { ProizvodComponent } from './components/prikaz/proizvod/proizvod.component';
 import { ProizvodUnosComponent } from './components/unos/proizvod-unos/proizvod-unos.component';
 import { GrupaPComponent } from './components/prikaz/grupa-p/grupa-p.component';
+import { StavkaCenovnikaUnosComponent } from './components/unos/stavka-cenovnika-unos/stavka-cenovnika-unos.component';
 
 
 
@@ -110,8 +111,8 @@ import { GrupaPComponent } from './components/prikaz/grupa-p/grupa-p.component';
     KnjigaFakturaComponent,
     ProizvodComponent,
     ProizvodUnosComponent,
-    GrupaPComponent
-
+    GrupaPComponent,
+    StavkaCenovnikaUnosComponent
   ],
   imports: [
     BrowserModule,

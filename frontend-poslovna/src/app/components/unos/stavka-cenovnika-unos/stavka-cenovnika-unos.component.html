@@ -1,0 +1,30 @@
+<div class="divbody">
+
+  
+  <div class="container color-dark">
+    <div class="col">
+      <h2>Stavke Cenovnika</h2>
+    </div>
+   
+  </div>
+  <div class="container color-light">
+    <div class="col">
+      <p class="sm">Dodavanje stavke.</p>
+      <input name="naziv" class="form-control" [(ngModel)]="stavka.cena" #naziv="ngModel" placeholder="Cena stavke"><br>
+      <label>Izaberite proizvod: </label><br>
+      <select  [(ngModel)]="pI" name="pg" #pg="ngModel" class="form-control">
+        <option *ngFor="let p of proizvodi; let i = index" [ngValue]="i">{{p.nazivProizvoda}}</option>
+      </select><br>
+      <label>Izaberite cenovnik: </label><br>
+      <select  [(ngModel)]="cI" name="jed" #pjed="ngModel" class="form-control">
+        <option *ngFor="let c of cenovnici; let i = index" [ngValue]="i">{{c.datumVazenja}}</option>
+      </select><br>
+        <button mat-raised-button (click)="addStavka()">
+          <i class="fas fa-plus-circle">Dodaj</i></button><br><br> 
+    </div>
+  
+  
+  </div>
+  
+  
+  </div>

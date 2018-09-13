@@ -61,12 +61,13 @@ public class CenovnikController {
 		return new ResponseEntity<>(c, HttpStatus.OK);
 	}
 	
-	@PostMapping("/newStavka")
-	public ResponseEntity<?> addNewStavka(@RequestBody StavkaCenovnikaDTO dto){
+	@PostMapping("/newStavka/{id}")
+	public ResponseEntity<?> addNewStavka(@RequestBody StavkaCenovnikaDTO dto, @PathVariable Long id){
 		StavkaCenovnika sc = new StavkaCenovnika();
 		sc.setId(dto.getId());
-		sc.setCenovnik(cenovnikService.findOne(dto.getCenovnikId()));
+		sc.setCenovnik(cenovnikService.findOne(id));
 		sc.setProizvod(dto.getProizvod());
+		sc.setCena(dto.getCena());
 		stavkaService.add(sc);
 		return new ResponseEntity<>(sc, HttpStatus.OK);
 		
