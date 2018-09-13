@@ -1,0 +1,70 @@
+<div class="divbody">
+<div>
+  <div class="col">
+    <h2>Proizvodi</h2>
+  </div>
+ 
+</div>
+<div>
+    <mat-form-field>
+      <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+    </mat-form-field>
+</div>
+<div class="mat-elevation-z8">
+  <table mat-table [dataSource]="dataSource" matSort>
+<ng-container matColumnDef="select">
+  <th mat-header-cell *matHeaderCellDef>
+    <mat-checkbox (change)="$event ? masterToggle() : null"
+                  [checked]="selection.hasValue() && isAllSelected()"
+                  [indeterminate]="selection.hasValue() && !isAllSelected()">
+    </mat-checkbox>
+  </th>
+  <td mat-cell *matCellDef="let row">
+    <mat-checkbox (click)="$event.stopPropagation()"
+                  (change)="$event ? selection.toggle(row) : null"
+                  [checked]="selection.isSelected(row)">
+    </mat-checkbox>
+  </td>
+</ng-container>
+
+  <!-- Progress Column -->
+  <ng-container matColumnDef="naziv">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> Proizvod </th>
+    <td mat-cell *matCellDef="let row"> {{row.nazivProizvoda}} </td>
+  </ng-container>
+
+  <!-- Name Column -->
+  <ng-container matColumnDef="opis">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> Opis </th>
+    <td mat-cell *matCellDef="let row"> {{row.Opis}} </td>
+  </ng-container>
+
+  
+
+
+  <!-- Color Column -->
+  <ng-container matColumnDef="preduzece">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> Preduzece </th>
+    <td mat-cell *matCellDef="let row" [style.color]="row.color"> {{row.preduzece.nazivPreduzeca}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="grupa">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> Grupa proizvoda </th>
+    <td mat-cell *matCellDef="let row"> {{row.grupaProizvod.naziv}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="jedinica">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> Jedinica mere </th>
+    <td mat-cell *matCellDef="let row"> {{row.jedinicaMere.naziv}} </td>
+  </ng-container>
+  
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns">
+      </tr>
+      
+    </table>
+  
+    <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+  </div>
+</div>
+

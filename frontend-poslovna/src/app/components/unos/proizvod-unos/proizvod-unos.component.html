@@ -1,0 +1,35 @@
+<div class="divbody">
+
+  
+  <div class="container color-dark">
+    <div class="col">
+      <h2>Proizvodi</h2>
+    </div>
+   
+  </div>
+  <div class="container color-light">
+    <div class="col">
+      <p class="sm">Dodavanje proizvoda.</p>
+      <input name="naziv" class="form-control" [(ngModel)]="proizvod.nazivProizvoda" #naziv="ngModel" placeholder="Naziv proizvoda"><br>
+      <input name="opis" class="form-control" [(ngModel)]="proizvod.opis" #opis="ngModel" placeholder="Opis proizvoda"><br>
+      <label>Izaberite grupu proizvoda: </label><br>
+      <select  [(ngModel)]="grupeI" name="pg" #pg="ngModel" class="form-control">
+        <option *ngFor="let grp of grupe; let i = index" [ngValue]="i">{{grp.naziv}}</option>
+      </select><br>
+      <label>Izaberite jedinicu mere: </label><br>
+      <select  [(ngModel)]="jediniceI" name="jed" #pjed="ngModel" class="form-control">
+        <option *ngFor="let jed of jedinice; let i = index" [ngValue]="i">{{jed.naziv}}</option>
+      </select><br>
+      <label>Izaberite preduzece: </label><br>
+      <select  [(ngModel)]="preduzecaI" name="pred" #pred="ngModel" class="form-control">
+        <option *ngFor="let pred of preduzeca; let i = index" [ngValue]="i">{{pred.nazivPreduzeca}}</option>
+      </select><br>
+        <button mat-raised-button (click)="addProizvod()">
+          <i class="fas fa-plus-circle">Dodaj</i></button><br><br> 
+    </div>
+  
+  
+  </div>
+  
+  
+  </div>

@@ -7,6 +7,7 @@ import { Narudzbenica } from '../models/narudzbenica';
 import { Faktura } from '../models/faktura';
 import { PoslovnaGodina } from '../models/poslovna-godina';
 import { Izvestaj } from '../models/izvestaj';
+import { Proizvod } from '../models/proizvod';
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-type': 'application/json'})
 };
@@ -40,5 +41,11 @@ export class FakturaService {
   }
   getKnjiga(fromDate: number, toDate: number): Observable<number>{
     return this.http.get<number>('http://localhost:1234/api/izvestaj/KIF/' + fromDate + '/' + toDate);
+  }
+  getProizvodi(): Observable<Proizvod[]>{
+    return this.http.get<Proizvod[]>('http://localhost:1234/proizvod/getAll', httpOptions);
+  }
+  addProizvod(proizvod: Proizvod): Observable<Proizvod>{
+    return this.http.post<Proizvod>('http://localhost:1234/proizvod/', proizvod, httpOptions);
   }
 }

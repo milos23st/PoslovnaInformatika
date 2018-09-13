@@ -79,6 +79,8 @@ import { PreduzecePComponent } from './components/prikaz/preduzece-p/preduzece-p
 import { ValutaPComponent } from './components/prikaz/valuta-p/valuta-p.component';
 import { PdvPComponent } from './components/prikaz/pdv-p/pdv-p.component';
 import { KnjigaFakturaComponent } from './components/knjiga-faktura/knjiga-faktura.component';
+import { ProizvodComponent } from './components/prikaz/proizvod/proizvod.component';
+import { ProizvodUnosComponent } from './components/unos/proizvod-unos/proizvod-unos.component';
 
 
 
@@ -104,7 +106,9 @@ import { KnjigaFakturaComponent } from './components/knjiga-faktura/knjiga-faktu
     SearchPipe,
     ValutaPComponent,
     PdvPComponent,
-    KnjigaFakturaComponent
+    KnjigaFakturaComponent,
+    ProizvodComponent,
+    ProizvodUnosComponent
 
   ],
   imports: [

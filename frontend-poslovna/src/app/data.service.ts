@@ -101,7 +101,7 @@ export class DataService {
   }
 
   getGrupeProizvoda(): Observable<GrupaProizvoda[]> {
-    return this.http.get<GrupaProizvoda[]>(this.grupaUrl + '/getAll');
+    return this.http.get<GrupaProizvoda[]>(this.grupaUrl + '/getGroups');
 
   }
 

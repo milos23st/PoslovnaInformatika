@@ -19,13 +19,15 @@ import { PreduzecePComponent } from './components/prikaz/preduzece-p/preduzece-p
 import { ValutaPComponent } from './components/prikaz/valuta-p/valuta-p.component';
 import { PdvPComponent } from './components/prikaz/pdv-p/pdv-p.component';
 import { KnjigaFakturaComponent } from './components/knjiga-faktura/knjiga-faktura.component';
+import { ProizvodComponent } from './components/prikaz/proizvod/proizvod.component';
+import { ProizvodUnosComponent } from './components/unos/proizvod-unos/proizvod-unos.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent},
   { path: 'cenovnik', component: CenovnikComponent},
   { path: 'narudzbenica', component: NarudzbenicaComponent},
   { path: 'cenovnici', component: CenovniciComponent},
-  { path: 'proizvodi', component: ProizvodiComponent},
+  { path: 'proizvodi', component: ProizvodComponent},
   { path: 'fakture', component: FaktureComponent},
   { path: 'knjiga', component: KnjigaFakturaComponent},
 
@@ -46,6 +48,7 @@ const routes: Routes = [
   { path: 'poslovnaGodina', component : PoslovnaGodinaComponent },
   { path: 'preduzece', component : PreduzeceComponent },
   { path: 'valuta', component : ValutaComponent },
+  { path: 'proizvod', component: ProizvodUnosComponent},
 
 
 
