@@ -1,0 +1,41 @@
+<div class="divbody">
+
+  
+<div class="container color-dark">
+  <div class="col">
+    <h2>Grupe proizoda</h2>
+  </div>
+ 
+</div>
+<div class="container color-light">
+  <div class="col">
+    <p class="sm">Prikaz grupa proizvoda.</p>
+ 
+</div>
+<br>
+<div>
+  <mat-table [dataSource]="dataSource" >
+    <ng-container matColumnDef="naziv">
+      <mat-header-cell *matHeaderCellDef> Naziv</mat-header-cell>
+      <mat-cell *matCellDef="let grupa"> {{grupa.naziv}}</mat-cell>
+    </ng-container>
+     <ng-container matColumnDef="opis">
+      <mat-header-cell *matHeaderCellDef> Opis</mat-header-cell>
+      <mat-cell *matCellDef="let grupa"> {{grupa.opis}}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="pdv">
+      <mat-header-cell *matHeaderCellDef> Pdv</mat-header-cell>
+      <mat-cell *matCellDef="let grupa"> {{grupa.pdv.naziv}}</mat-cell>
+    </ng-container>
+    
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+
+</mat-table>
+
+
+</div>
+
+
+</div>
+</div>

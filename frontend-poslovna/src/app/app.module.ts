@@ -81,6 +81,7 @@ import { PdvPComponent } from './components/prikaz/pdv-p/pdv-p.component';
 import { KnjigaFakturaComponent } from './components/knjiga-faktura/knjiga-faktura.component';
 import { ProizvodComponent } from './components/prikaz/proizvod/proizvod.component';
 import { ProizvodUnosComponent } from './components/unos/proizvod-unos/proizvod-unos.component';
+import { GrupaPComponent } from './components/prikaz/grupa-p/grupa-p.component';
 
 
 
@@ -108,7 +109,8 @@ import { ProizvodUnosComponent } from './components/unos/proizvod-unos/proizvod-
     PdvPComponent,
     KnjigaFakturaComponent,
     ProizvodComponent,
-    ProizvodUnosComponent
+    ProizvodUnosComponent,
+    GrupaPComponent
 
   ],
   imports: [

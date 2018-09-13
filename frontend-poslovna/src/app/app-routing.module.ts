@@ -8,7 +8,7 @@ import { CenovniciComponent } from './components/glavno/cenovnici/cenovnici.comp
 import { ProizvodiComponent } from './components/glavno/proizvodi/proizvodi.component';
 import { FaktureComponent } from './components/glavno/fakture/fakture.component';
 import { CenovnikPComponent } from './components/prikaz/cenovnik-p/cenovnik-p.component';
-import { JedinicaMereComponent } from './components/unos/jedinica-mere/jedinica-mere.component'; 
+import { JedinicaMereComponent } from './components/unos/jedinica-mere/jedinica-mere.component';
 import { PdvComponent } from './components/unos/pdv/pdv.component';
 import { GrupaProizvodaComponent } from './components/unos/grupa-proizvoda/grupa-proizvoda.component';
 import { PoslovnaGodinaComponent } from './components/unos/poslovna-godina/poslovna-godina.component';
@@ -21,6 +21,7 @@ import { PdvPComponent } from './components/prikaz/pdv-p/pdv-p.component';
 import { KnjigaFakturaComponent } from './components/knjiga-faktura/knjiga-faktura.component';
 import { ProizvodComponent } from './components/prikaz/proizvod/proizvod.component';
 import { ProizvodUnosComponent } from './components/unos/proizvod-unos/proizvod-unos.component';
+import { GrupaPComponent } from './components/prikaz/grupa-p/grupa-p.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent},
@@ -39,6 +40,7 @@ const routes: Routes = [
   { path: 'preduzece1', component: PreduzecePComponent},
   { path: 'valute1', component: ValutaPComponent},
   { path: 'pdv1', component: PdvPComponent},
+  { path: 'grupa1', component: GrupaPComponent},
 
 // unos
 

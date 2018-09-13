@@ -12,7 +12,8 @@ import { Valuta } from '../../models/Valuta';
 export class ValutaPComponent implements OnInit {
 
   dataSource = new ValutaDataSource(this.dataService);
-  displayedColumns = ['naziv','oznaka']
+
+  displayedColumns = ['naziv', 'oznaka'];
 
 
   constructor(private dataService: DataService) { }

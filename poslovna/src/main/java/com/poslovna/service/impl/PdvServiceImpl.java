@@ -15,8 +15,8 @@ public class PdvServiceImpl implements PdvService{
 	@Autowired
 	private PdvRepository pdvRepository;
 	@Override
-	public Long addPDV(PDV pdv) {
-		return pdvRepository.save(pdv).getId();
+	public PDV addPDV(PDV pdv) {
+		return pdvRepository.save(pdv);
 	}
 	@Override
 	public List<PDV> findAll() {
