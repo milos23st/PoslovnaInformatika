@@ -1,0 +1,38 @@
+<div class="divbody">
+	<div class="col-md-4 panel my-md-5">
+		<h2>Dnevnik izlaznih faktura za zadati datumski interval:</h2>
+		
+			<div class="form-group">
+				<label for="fromDateInput">Od:</label>
+				<input type="date"
+					id="fromDateInput"
+					class="form-control"
+          [(ngModel)]="fromDate" name="pg1" #pg1="ngModel"
+					required
+					autofocus/>
+			</div>
+			<div class="form-group">
+				<label for="toDateInput">Do:</label>
+				<input type="date"
+					id="toDateInput"
+					class="form-control"
+          required
+          [(ngModel)]="toDate" name="pg" #pg="ngModel"
+          />
+			</div>
+			<a class="btn btn-info"
+             href="{{getKif()}}"
+             download="knjiga.pdf">
+               Preuzmi izvestaj
+           </a>
+			
+			<p class="my-3">
+			
+			</p>
+		
+	</div>
+	<object class="col-md-8 p-md-2"
+		height="800"
+		>
+	</object>
+</div>

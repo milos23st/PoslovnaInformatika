@@ -35,4 +35,10 @@ export class FakturaService {
   getIzvestaj(id: number): Observable<Izvestaj>{
     return this.http.get<Izvestaj>('http://localhost:1234/api/izvestaj/FSS/' + id, httpOptions);
   }
+  getXML(id: number): Observable<number>{
+    return this.http.get<number>('http://localhost:1234/api/export/fakture/' + id, httpOptions);
+  }
+  getKnjiga(fromDate: number, toDate: number): Observable<number>{
+    return this.http.get<number>('http://localhost:1234/api/izvestaj/KIF/' + fromDate + '/' + toDate);
+  }
 }

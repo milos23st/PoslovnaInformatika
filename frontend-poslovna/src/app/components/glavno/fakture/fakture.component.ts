@@ -75,7 +75,12 @@ export class FaktureComponent implements OnInit {
         this.preuzeo = true;
       }
     )*/
+    
     let s = 'http://localhost:1234/api/izvestaj/FSS/' + this.fakture[id].id;
+    return s;
+  }
+  getXML(id: number): string{
+    let s = 'http://localhost:1234/api/export/fakture/' + this.fakture[id].id;
     return s;
   }
   changeGodina(){

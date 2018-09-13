@@ -86,11 +86,15 @@
       <ng-container matColumnDef="dugmici">
           <th mat-header-cell *matHeaderCellDef mat-sort-header> Akcije </th>
           <td mat-cell *matCellDef="let row; let i = index" [style.color]="row.color">
-             <a class="btn btn-custom mb-1"
+             <a class="btn btn-info"
              href="{{getIzvestaj(i)}}"
              download="report.pdf">
-              
                Preuzmi izvestaj
+           </a>&nbsp;
+           <a class="btn btn-info"
+             href="{{getXML(i)}}"
+             download="faktura.xml">
+               Preuzmi xml
            </a>
           </td>
         </ng-container>

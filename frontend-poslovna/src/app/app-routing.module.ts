@@ -18,6 +18,7 @@ import { JedinicaMerePComponent } from './components/prikaz/jedinica-mere-p/jedi
 import { PreduzecePComponent } from './components/prikaz/preduzece-p/preduzece-p.component';
 import { ValutaPComponent } from './components/prikaz/valuta-p/valuta-p.component';
 import { PdvPComponent } from './components/prikaz/pdv-p/pdv-p.component';
+import { KnjigaFakturaComponent } from './components/knjiga-faktura/knjiga-faktura.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent},
@@ -26,6 +27,7 @@ const routes: Routes = [
   { path: 'cenovnici', component: CenovniciComponent},
   { path: 'proizvodi', component: ProizvodiComponent},
   { path: 'fakture', component: FaktureComponent},
+  { path: 'knjiga', component: KnjigaFakturaComponent},
 
 
 

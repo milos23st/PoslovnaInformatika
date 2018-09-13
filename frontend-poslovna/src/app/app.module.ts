@@ -78,6 +78,7 @@ import { JedinicaMerePComponent } from './components/prikaz/jedinica-mere-p/jedi
 import { PreduzecePComponent } from './components/prikaz/preduzece-p/preduzece-p.component';
 import { ValutaPComponent } from './components/prikaz/valuta-p/valuta-p.component';
 import { PdvPComponent } from './components/prikaz/pdv-p/pdv-p.component';
+import { KnjigaFakturaComponent } from './components/knjiga-faktura/knjiga-faktura.component';
 
 
 
@@ -102,7 +103,8 @@ import { PdvPComponent } from './components/prikaz/pdv-p/pdv-p.component';
     PreduzecePComponent,
     SearchPipe,
     ValutaPComponent,
-    PdvPComponent
+    PdvPComponent,
+    KnjigaFakturaComponent
 
   ],
   imports: [
