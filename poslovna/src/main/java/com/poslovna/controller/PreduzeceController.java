@@ -37,6 +37,7 @@ public class PreduzeceController {
 		p.setAdresa(dto.getAdresa());
 		p.setEmail(dto.getEmail());
 		p.setId(dto.getId());
+		p.setPib(dto.getPib());
 		p.setNazivPreduzeca(dto.getNazivPreduzeca());
 		Preduzece p1 = preduzeceService.add(p);
 		return new ResponseEntity<>(p1, HttpStatus.OK);
