@@ -23,7 +23,10 @@ public class StavkaCenovnikaServiceImpl implements StavkaCenovnikaService {
 
 	@Override
 	public double findCenaByCenovnikAndProizvod(Cenovnik cn, Proizvod proizvod) {
-		return repository.findByCenovnikAndProizvod(cn, proizvod).get(0).getCena();
+		if(!repository.findByCenovnikAndProizvod(cn, proizvod).isEmpty()) {
+			return repository.findByCenovnikAndProizvod(cn, proizvod).get(0).getCena();
+			}
+			else return 0;
 	}
 
 	@Override

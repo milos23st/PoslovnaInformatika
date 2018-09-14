@@ -40,7 +40,8 @@ public class PoslovnaGodinaController {
 		PoslovnaGodina pg = new PoslovnaGodina();
 		pg.setGodina(pgdto.getGodina());
 		pg.setId(pgdto.getId());
-		pg.setPreduzece(preduzeceService.getById(pgdto.getId()));
+		System.out.println(pgdto.getPreduzece().getId());
+		pg.setPreduzece(preduzeceService.getById(pgdto.getPreduzece().getId()));
 		pg.setZakljucena(pgdto.isZakljucena());
 		PoslovnaGodina retVal = poslovnaGodinaService.add(pg);
 		return new ResponseEntity<>(retVal, HttpStatus.OK);
@@ -67,7 +68,7 @@ public class PoslovnaGodinaController {
 		PoslovnaGodina pg = poslovnaGodinaService.findOne(pgdto.getId());
 		pg.setGodina(pgdto.getGodina());
 		pg.setZakljucena(pgdto.isZakljucena());
-		pg.setPreduzece(preduzeceService.getById(pgdto.getPreduzeceId()));
+		pg.setPreduzece(preduzeceService.getById(pgdto.getPreduzece().getId()));
 		PoslovnaGodina retVal = poslovnaGodinaService.add(pg);
 		return new ResponseEntity<>(retVal, HttpStatus.OK);
 	}

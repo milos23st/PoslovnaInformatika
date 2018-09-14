@@ -3,18 +3,28 @@
     <id>1</id>
     <brojFakture>Broj fakture: 0</brojFakture>
     <broj>0</broj>
-    <datumFakture>2018-09-13T00:00:00+02:00</datumFakture>
-    <datumFaktureLong>1536852495308</datumFaktureLong>
-    <datumValute>2018-09-13T00:00:00+02:00</datumValute>
-    <ukupanRabat>161.728</ukupanRabat>
-    <bezPDV>15038.272</bezPDV>
-    <ukupanPorez>1503.8272</ukupanPorez>
+    <datumFakture>2018-09-14T00:00:00+02:00</datumFakture>
+    <datumFaktureLong>1536950237026</datumFaktureLong>
+    <datumValute>2018-09-14T00:00:00+02:00</datumValute>
+    <ukupanRabat>7096.876883712</ukupanRabat>
+    <bezPDV>93592.723116288</bezPDV>
+    <ukupanPorez>9359.2723116288</ukupanPorez>
     <ukupnoRobaIUsluge>0.0</ukupnoRobaIUsluge>
-    <iznosFakture>16542.0992</iznosFakture>
+    <iznosFakture>102951.9954279168</iznosFakture>
     <poslovniPartner>
+        <adresa>Radnicka 22</adresa>
+        <brojRacuna>160786</brojRacuna>
         <brojTelefona>02312351</brojTelefona>
+        <email>md@gmail.com</email>
         <id>34</id>
         <naziv>Moj Dom</naziv>
+        <preduzece>
+            <adresa>Kisacka 55, Novi Sad</adresa>
+            <email>gigatron@gmail.com</email>
+            <id>2</id>
+            <nazivPreduzeca>Gigatron</nazivPreduzeca>
+            <pib>0210483328</pib>
+        </preduzece>
         <vrsta>Kupac</vrsta>
     </poslovniPartner>
     <poslovnaGodina>

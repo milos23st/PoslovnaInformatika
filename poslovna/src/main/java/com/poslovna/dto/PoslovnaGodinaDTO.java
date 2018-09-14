@@ -12,17 +12,19 @@ public class PoslovnaGodinaDTO {
 	
 	private boolean zakljucena;
 	
-    private Long preduzeceId;
+    private Preduzece preduzece;
     
     public PoslovnaGodinaDTO() {}
-    
-	public PoslovnaGodinaDTO(Long id, int godina, boolean zakljucena, Long preduzeceId) {
+   
+
+	public PoslovnaGodinaDTO(Long id, int godina, boolean zakljucena, Preduzece preduzece) {
 		super();
 		this.id = id;
 		this.godina = godina;
 		this.zakljucena = zakljucena;
-		this.preduzeceId = preduzeceId;
+		this.preduzece = preduzece;
 	}
+
 
 	public Long getId() {
 		return id;
@@ -48,13 +50,17 @@ public class PoslovnaGodinaDTO {
 		this.zakljucena = zakljucena;
 	}
 
-	public Long getPreduzeceId() {
-		return preduzeceId;
+
+	public Preduzece getPreduzece() {
+		return preduzece;
 	}
 
-	public void setPreduzeceId(Long preduzeceId) {
-		this.preduzeceId = preduzeceId;
+
+	public void setPreduzece(Preduzece preduzece) {
+		this.preduzece = preduzece;
 	}
+
+	
     
     
     
