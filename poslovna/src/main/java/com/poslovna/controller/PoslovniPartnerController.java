@@ -15,12 +15,15 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.poslovna.domain.PoslovniPartner;
 import com.poslovna.dto.PoslovniPartnerDTO;
 import com.poslovna.service.PoslovniPartnerService;
+import com.poslovna.service.PreduzeceService;
 
 @Controller
 @RequestMapping(value="/poslovniPartner")
 public class PoslovniPartnerController {
 	@Autowired
 	private PoslovniPartnerService poslovniPartnerService;
+	@Autowired
+	private PreduzeceService preduzeceService;
 	
 	@RequestMapping(value="getPoslovniPartneri", method=RequestMethod.GET)
 	public ResponseEntity<List<PoslovniPartner>> getPoslovniPartneri(){
@@ -30,13 +33,22 @@ public class PoslovniPartnerController {
 	
 	@RequestMapping(method=RequestMethod.POST, consumes="application/json")
 	public ResponseEntity<PoslovniPartner> addPoslovniPartner(@RequestBody PoslovniPartnerDTO ppdto){
+		
 		PoslovniPartner pp = new PoslovniPartner();
 		pp.setAdresa(ppdto.getAdresa());
 		pp.setBrojRacuna(ppdto.getBrojRacuna());
-		pp.setBrojTelefona(pp.getBrojTelefona());
+		pp.setBrojTelefona(ppdto.getBrojTelefona());
 		pp.setEmail(ppdto.getEmail());
 		pp.setId(ppdto.getId());
 		pp.setNaziv(ppdto.getNaziv());
+		if(ppdto.getVrsta().equals("kupac")) {
+			pp.setVrsta(PoslovniPartner.VrstaPartnera.Kupac);
+		}
+		else if(ppdto.getVrsta().equals("dobavljac")) {
+			pp.setVrsta(PoslovniPartner.VrstaPartnera.Dobavljac);
+		}
+		else pp.setVrsta(PoslovniPartner.VrstaPartnera.Oboje);
+		pp.setPreduzece(preduzeceService.getById(ppdto.getPreduzece().getId()));
 			
 		PoslovniPartner poslovniPartner = poslovniPartnerService.add(pp);
 		return new ResponseEntity<>(poslovniPartner, HttpStatus.OK);

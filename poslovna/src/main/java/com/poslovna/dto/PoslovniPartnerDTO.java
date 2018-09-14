@@ -1,5 +1,7 @@
 package com.poslovna.dto;
 
+import com.poslovna.domain.Preduzece;
+
 public class PoslovniPartnerDTO {
 	
 	private long id;
@@ -13,6 +15,10 @@ public class PoslovniPartnerDTO {
     private String email;
 
     private String brojRacuna;
+    
+    private Preduzece preduzece;
+    
+    private String vrsta;
 	
 	public PoslovniPartnerDTO(){
 		
@@ -29,7 +35,23 @@ public class PoslovniPartnerDTO {
 		this.brojRacuna = brojRacuna;
 	}
 
+	
 
+	public String getVrsta() {
+		return vrsta;
+	}
+
+	public void setVrsta(String vrsta) {
+		this.vrsta = vrsta;
+	}
+
+	public Preduzece getPreduzece() {
+		return preduzece;
+	}
+
+	public void setPreduzece(Preduzece preduzece) {
+		this.preduzece = preduzece;
+	}
 
 	public long getId() {
 		return id;
