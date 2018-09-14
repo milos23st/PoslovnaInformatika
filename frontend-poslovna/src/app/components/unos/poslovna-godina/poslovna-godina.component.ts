@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { DataService } from '../../../data.service';
+import { Preduzece } from '../../models/preduzece';
+import { PoslovnaGodina } from '../../models/poslovna-godina';
 
 @Component({
   selector: 'app-poslovna-godina',
@@ -6,10 +9,20 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./poslovna-godina.component.css']
 })
 export class PoslovnaGodinaComponent implements OnInit {
+/*
+poslovnaGodina = new PoslovnaGodina('', '', '');
+*/
+  preduzeca: Preduzece[];
+  broj: number;
 
-  constructor() { }
+  constructor(private dataService: DataService) { }
 
   ngOnInit() {
+    this.dataService.getPreduzece().subscribe(
+      (data: any) => {
+        this.preduzeca = data;
+      }
+    );
   }
 
 }

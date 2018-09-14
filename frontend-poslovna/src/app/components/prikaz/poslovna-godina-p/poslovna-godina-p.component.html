@@ -1,3 +1,41 @@
-<p>
-  poslovna-godina-p works!
-</p>
+<div class="divbody">
+
+  
+<div class="container color-dark">
+  <div class="col">
+    <h2>Poslovne godine</h2>
+  </div>
+ 
+</div>
+<div class="container color-light">
+  <div class="col">
+    <p class="sm">Prikaz poslovnih godina.</p>
+ 
+</div>
+<br>
+<div>
+  <mat-table [dataSource]="dataSource" >
+    <ng-container matColumnDef="godina">
+      <mat-header-cell *matHeaderCellDef> Godina</mat-header-cell>
+      <mat-cell *matCellDef="let poslovna"> {{poslovna.godina}}</mat-cell>
+    </ng-container>
+     <ng-container matColumnDef="zakljucena">
+      <mat-header-cell *matHeaderCellDef> Zakljucena</mat-header-cell>
+      <mat-cell *matCellDef="let poslovna"> {{poslovna.zakljucena}}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="preduzece">
+      <mat-header-cell *matHeaderCellDef> Preduzece</mat-header-cell>
+      <mat-cell *matCellDef="let poslovna"> {{poslovna.preduzece.nazivPreduzeca}}</mat-cell>
+    </ng-container>
+    
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+
+</mat-table>
+
+
+</div>
+
+
+</div>
+</div>

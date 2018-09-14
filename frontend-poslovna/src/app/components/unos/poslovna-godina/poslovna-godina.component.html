@@ -11,12 +11,22 @@
   <div class="col">
     <p class="sm">Dodavanje poslovne godine.</p>
 
-    <form>
+    <form name="form" (ngSubmit)="addForm.form.valid" class="register-form" #addForm="ngForm">
 
-       <mat-form-field class="matf">
-    <input matInput type="number" placeholder="Godina" name="naziv">
+       <mat-form-field class="matf" [ngClass]="{ 'has-error': addForm.submitted && !godina.valid }">
+    <input matInput type="number" placeholder="Godina" name="godina">
       </mat-form-field>
 
+      <label>Izaberite preduzece:</label><br>
+ <select placeholder="Birajte Preduzece" [(ngModel)]="preduzece" name="selectedCenovnik" #selectedCenovnik1="ngModel">
+    <option *ngFor="let preduzece of preduzeca; let i = index" [ngValue]="i">
+      {{preduzece.nazivPreduzeca}}
+      
+    </option>
+    </select>
+    <br>
+
+<!--
       <mat-form-field>
   <mat-select placeholder="Birajte Preduzece">
     <mat-option>
@@ -30,10 +40,14 @@
     </mat-option>
   </mat-select>
 </mat-form-field>
+-->
 <br>
 
       
     <mat-checkbox>Zakljucena!</mat-checkbox>
+
+    <br>
+    <br>
       
 
 
