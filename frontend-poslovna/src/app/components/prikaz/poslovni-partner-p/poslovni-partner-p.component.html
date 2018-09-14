@@ -1,0 +1,53 @@
+<div class="divbody">
+
+  
+<div class="container color-dark">
+  <div class="col">
+    <h2>Poslovni partneri</h2>
+  </div>
+ 
+</div>
+<div class="container color-light">
+  <div class="col">
+    <p class="sm">Prikaz poslovnih partnera.</p>
+ 
+</div>
+<br>
+<div>
+  <mat-table [dataSource]="dataSource" >
+    <ng-container matColumnDef="naziv">
+      <mat-header-cell *matHeaderCellDef> Naziv</mat-header-cell>
+      <mat-cell *matCellDef="let poslovni"> {{poslovni.naziv}}</mat-cell>
+    </ng-container>
+     <ng-container matColumnDef="adresa">
+      <mat-header-cell *matHeaderCellDef> Adresa</mat-header-cell>
+      <mat-cell *matCellDef="let poslovni"> {{poslovni.adresa}}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="brojTelefona">
+      <mat-header-cell *matHeaderCellDef> Broj telefona</mat-header-cell>
+      <mat-cell *matCellDef="let poslovni"> {{poslovni.brojTelefona}}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="email">
+      <mat-header-cell *matHeaderCellDef> Email</mat-header-cell>
+      <mat-cell *matCellDef="let poslovni"> {{poslovni.email}}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="brojRacuna">
+      <mat-header-cell *matHeaderCellDef> Broj racuna</mat-header-cell>
+      <mat-cell *matCellDef="let poslovni"> {{poslovni.brojRacuna}}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="preduzece">
+      <mat-header-cell *matHeaderCellDef> Preduzece</mat-header-cell>
+      <mat-cell *matCellDef="let poslovni"> {{poslovni.preduzece.nazivPreduzeca}}</mat-cell>
+    </ng-container>
+    
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+
+</mat-table>
+
+
+</div>
+
+
+</div>
+</div>

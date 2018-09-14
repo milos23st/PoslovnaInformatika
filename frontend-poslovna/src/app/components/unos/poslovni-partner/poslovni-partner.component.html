@@ -1,0 +1,55 @@
+<div class="divbody">
+
+  
+<div class="container color-dark">
+  <div class="col">
+    <h2>Grupa proizvoda</h2>
+  </div>
+ 
+</div>
+<div class="container color-light">
+  <div class="col">
+    <p class="sm">Dodavanje grupe proizvoda.</p>
+
+    <form name="form" (ngSubmit)="addForm.form.valid && addPoslovniP()" class="register-form" #addForm="ngForm">
+
+       <mat-form-field class="matf" [ngClass]="{ 'has-error': addForm.submitted && !naziv.valid }">
+    <input matInput placeholder="Naziv" name="naziv" [(ngModel)]="poslovniPartner.naziv" #naziv="ngModel">
+      </mat-form-field>
+
+      <mat-form-field class="matf" [ngClass]="{ 'has-error': addForm.submitted && !adresa.valid }">
+    <input matInput placeholder="Adresa" name="adresa" [(ngModel)]="poslovniPartner.adresa" #adresa="ngModel">
+      </mat-form-field>
+
+      <mat-form-field class="matf" [ngClass]="{ 'has-error': addForm.submitted && !brojTelefona.valid }">
+    <input matInput placeholder="Broj telefona" name="brojTelefona" [(ngModel)]="poslovniPartner.brojTelefona" #brojTelefona="ngModel">
+      </mat-form-field>
+
+      <mat-form-field class="matf" [ngClass]="{ 'has-error': addForm.submitted && !email.valid }">
+    <input matInput placeholder="Email" name="email" [(ngModel)]="poslovniPartner.email" #email="ngModel">
+      </mat-form-field>
+
+      <mat-form-field class="matf" [ngClass]="{ 'has-error': addForm.submitted && !brojRacuna.valid }">
+    <input matInput placeholder="Broj racun" name="brojRacuna" [(ngModel)]="poslovniPartner.brojRacuna" #brojRacuna="ngModel">
+      </mat-form-field>
+
+<label>Izaberite preduzece:</label><br>
+ <select placeholder="Birajte preduzece" [(ngModel)]="broj" name="selectedCenovnik" #selectedCenovnik1="ngModel">
+    <option *ngFor="let preduzece of preduzeca; let i = index" [ngValue]="i">
+      {{preduzece.nazivPreduzeca}}
+      1
+    </option>
+    </select>
+      <br>
+      <br>
+      <div class="form-group">
+        <input type="submit" class="btn" value="Submit">
+      </div>
+    </form>
+  </div>
+
+
+</div>
+
+
+</div>

@@ -1,4 +1,4 @@
-<div class="divbody">
+ <div class="divbody">
 
   
 <div class="container color-dark">
@@ -11,10 +11,10 @@
   <div class="col">
     <p class="sm">Unos PDV-a</p>
 
-    <form>
+    <form (ngSubmit)="addForm.form.valid && addPdvv()" class="register-form" #addForm="ngForm">
 
-       <mat-form-field class="matf">
-    <input matInput placeholder="Naziv" name="naziv">
+       <mat-form-field class="matf" [ngClass]="{ 'has-error': addForm.submitted && !naziv.valid }">
+    <input matInput placeholder="Naziv" name="naziv" [(ngModel)]="pdv.naziv" #naziv="ngModel">
       </mat-form-field>
 
       

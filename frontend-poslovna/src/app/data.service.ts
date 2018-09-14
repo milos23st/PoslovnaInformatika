@@ -8,6 +8,7 @@ import { Preduzece } from './components/models/preduzece';
 import { Valuta } from './components/models/Valuta';
 import { Pdv } from './components/models/pdv';
 import { GrupaProizvoda } from './components/models/grupa-proizvoda';
+import { PoslovniPartner } from './components/models/poslovni-partner';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': 'true' })
@@ -32,6 +33,8 @@ export class DataService {
   private pdvUrl = 'http://localhost:1234/pdv';
 
   private grupaUrl = 'http://localhost:1234/grupa';
+
+  private poslovniPartUrl = 'http://localhost:1234/poslovniPartner'
 
 
 
@@ -106,6 +109,20 @@ export class DataService {
   }
 
 // grupaProizvoda - kraj
+
+// poslovni partner - pocetak
+
+  addPoslovniPart(poslovniPartner: PoslovniPartner): Observable<PoslovniPartner> {
+    return this.http.post<PoslovniPartner>(this.poslovniPartUrl, poslovniPartner, httpOptions);
+  }
+
+  getPoslovniPartneri(): Observable<PoslovniPartner[]> {
+    return this.http.get<PoslovniPartner[]>(this.poslovniPartUrl + '/getPoslovniPartneri');
+
+  }
+
+
+// poslovni partner - kraj
 
   constructor(private http: HttpClient) { }
 }

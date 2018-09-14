@@ -83,6 +83,9 @@ import { ProizvodComponent } from './components/prikaz/proizvod/proizvod.compone
 import { ProizvodUnosComponent } from './components/unos/proizvod-unos/proizvod-unos.component';
 import { GrupaPComponent } from './components/prikaz/grupa-p/grupa-p.component';
 import { StavkaCenovnikaUnosComponent } from './components/unos/stavka-cenovnika-unos/stavka-cenovnika-unos.component';
+import { PoslovniPartnerPComponent } from './components/prikaz/poslovni-partner-p/poslovni-partner-p.component';
+import { PoslovnaGodinaPComponent } from './components/prikaz/poslovna-godina-p/poslovna-godina-p.component';
+import { PoslovniPartnerComponent } from './components/unos/poslovni-partner/poslovni-partner.component';
 
 
 
@@ -112,7 +115,10 @@ import { StavkaCenovnikaUnosComponent } from './components/unos/stavka-cenovnika
     ProizvodComponent,
     ProizvodUnosComponent,
     GrupaPComponent,
-    StavkaCenovnikaUnosComponent
+    StavkaCenovnikaUnosComponent,
+    PoslovniPartnerPComponent,
+    PoslovnaGodinaPComponent,
+    PoslovniPartnerComponent
   ],
   imports: [
     BrowserModule,

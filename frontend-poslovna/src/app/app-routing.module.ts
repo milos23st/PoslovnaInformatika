@@ -23,6 +23,9 @@ import { ProizvodComponent } from './components/prikaz/proizvod/proizvod.compone
 import { ProizvodUnosComponent } from './components/unos/proizvod-unos/proizvod-unos.component';
 import { GrupaPComponent } from './components/prikaz/grupa-p/grupa-p.component';
 import { StavkaCenovnikaUnosComponent } from './components/unos/stavka-cenovnika-unos/stavka-cenovnika-unos.component';
+import { PoslovniPartnerComponent } from './components/unos/poslovni-partner/poslovni-partner.component';
+import { PoslovniPartnerPComponent } from './components/prikaz/poslovni-partner-p/poslovni-partner-p.component';
+import { PoslovnaGodinaPComponent } from './components/prikaz/poslovna-godina-p/poslovna-godina-p.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent},
@@ -42,6 +45,8 @@ const routes: Routes = [
   { path: 'valute1', component: ValutaPComponent},
   { path: 'pdv1', component: PdvPComponent},
   { path: 'grupa1', component: GrupaPComponent},
+  { path: 'poslovniPartner1', component: PoslovniPartnerPComponent},
+  { path: 'poslovnaGodina1', component: PoslovnaGodinaPComponent},
 
 // unos
 
@@ -52,7 +57,8 @@ const routes: Routes = [
   { path: 'preduzece', component : PreduzeceComponent },
   { path: 'valuta', component : ValutaComponent },
   { path: 'proizvod', component: ProizvodUnosComponent},
-  { path: 'stavkaCenovnika', component: StavkaCenovnikaUnosComponent}
+  { path: 'stavkaCenovnika', component: StavkaCenovnikaUnosComponent},
+  { path: 'poslovniPartner', component: PoslovniPartnerComponent}
 
 
 
