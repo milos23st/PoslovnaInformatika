@@ -1,6 +1,6 @@
 import { Preduzece } from './preduzece';
 export class PoslovniPartner {
-
+    public vrsta: string;
     constructor(
     
         
@@ -10,8 +10,10 @@ export class PoslovniPartner {
         public email: string,
         public brojRacuna: string,
         public preduzece: Preduzece,
-        public vrsta?: string,
+        public vrsta1?: string,
         public id?: string
 
-    ){}
+    ){
+        this.vrsta = vrsta1;
+    }
 }

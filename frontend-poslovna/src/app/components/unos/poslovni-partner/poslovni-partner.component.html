@@ -40,6 +40,13 @@
       1
     </option>
     </select>
+      <br><br>
+  <label>Izaberite vrstu:</label><br>
+  <select placeholder="Vrsta partnera" [(ngModel)]="vrsta" name="vrsta1" #vrsta1="ngModel">
+    <option value="kupac">Kupac</option>
+    <option value="dobavljac">Dobavljac</option>
+    <option value="oboje">Oboje</option>
+  </select>
       <br>
       <br>
       <div class="form-group">

@@ -13,7 +13,7 @@ export class PoslovniPartnerComponent implements OnInit {
   poslovniPartner = new PoslovniPartner('', '', '', '', '', this.poslovniPartner);
   preduzeca: Preduzece[];
   broj: number;
-
+  vrsta: string;
   constructor(private dataService: DataService) { }
 
   ngOnInit() {
@@ -25,6 +25,7 @@ export class PoslovniPartnerComponent implements OnInit {
   }
 
     addPoslovniP() {
+      this.poslovniPartner.vrsta = this.vrsta;
       this.poslovniPartner.preduzece = this.preduzeca[this.broj];
         this.dataService.addPoslovniPart(this.poslovniPartner).subscribe(
       data => {
