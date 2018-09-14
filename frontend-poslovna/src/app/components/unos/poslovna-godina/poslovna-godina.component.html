@@ -11,51 +11,26 @@
   <div class="col">
     <p class="sm">Dodavanje poslovne godine.</p>
 
-    <form name="form" (ngSubmit)="addForm.form.valid" class="register-form" #addForm="ngForm">
 
-       <mat-form-field class="matf" [ngClass]="{ 'has-error': addForm.submitted && !godina.valid }">
-    <input matInput type="number" placeholder="Godina" name="godina">
-      </mat-form-field>
+    
+    <input class="form-control" type="number" placeholder="Godina" name="godina" [(ngModel)]="poslovnaGodina.godina" #godina="ngModel" >
+     
 
       <label>Izaberite preduzece:</label><br>
- <select placeholder="Birajte Preduzece" [(ngModel)]="preduzece" name="selectedCenovnik" #selectedCenovnik1="ngModel">
+ <select placeholder="Birajte Preduzece" [(ngModel)]="broj" name="selectedCenovnik" #selectedCenovnik1="ngModel">
     <option *ngFor="let preduzece of preduzeca; let i = index" [ngValue]="i">
       {{preduzece.nazivPreduzeca}}
       
     </option>
     </select>
     <br>
-
-<!--
-      <mat-form-field>
-  <mat-select placeholder="Birajte Preduzece">
-    <mat-option>
-      1
-    </mat-option>
-    <mat-option>
-      2
-    </mat-option>
-    <mat-option>
-      3
-    </mat-option>
-  </mat-select>
-</mat-form-field>
--->
-<br>
-
-      
-    <mat-checkbox>Zakljucena!</mat-checkbox>
-
-    <br>
-    <br>
-      
-
-
-      
-      <div class="form-group">
-        <input type="submit" class="btn" value="Submit">
-      </div>
-    </form>
+    <br> 
+    <div class="checkbox">
+      <label><input type="checkbox" [(ngModel)]="checked" name="zak" #zak="ngModel"> Zakljucena</label>
+    </div>
+    <button mat-raised-button (click)="addPoslovnaGodina()">
+    <i class="fas fa-plus-circle">Dodaj</i></button><br><br> 
+    
   </div>
 
 

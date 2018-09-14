@@ -8,8 +8,8 @@ import { Preduzece } from './components/models/preduzece';
 import { Valuta } from './components/models/Valuta';
 import { Pdv } from './components/models/pdv';
 import { GrupaProizvoda } from './components/models/grupa-proizvoda';
-import { PoslovniPartner } from './components/models/poslovni-partner';
 import { PoslovnaGodina } from './components/models/poslovna-godina';
+import { PoslovniPartner } from './components/models/poslovni-partner';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': 'true' })
@@ -35,10 +35,10 @@ export class DataService {
 
   private grupaUrl = 'http://localhost:1234/grupa';
 
+  
   private poslovniPartUrl = 'http://localhost:1234/poslovniPartner';
 
   private poslovnaGodinaUrl = 'http://localhost:1234/poslovnaGodina';
-
 
 
   getHeroes (): Observable<CenovniciComponent[]> {
@@ -110,35 +110,29 @@ export class DataService {
     return this.http.get<GrupaProizvoda[]>(this.grupaUrl + '/getGroups');
 
   }
+  addPoslovnaGodina(pg: PoslovnaGodina): Observable<PoslovnaGodina>{
+    return this.http.post<PoslovnaGodina>('http://localhost:1234/poslovnaGodina', pg, httpOptions);
+  }
 
 // grupaProizvoda - kraj
+addPoslovniPart(poslovniPartner: PoslovniPartner): Observable<PoslovniPartner> {
+  return this.http.post<PoslovniPartner>(this.poslovniPartUrl, poslovniPartner, httpOptions);
+}
 
-// poslovni partner - pocetak
+getPoslovniPartneri(): Observable<PoslovniPartner[]> {
+  return this.http.get<PoslovniPartner[]>(this.poslovniPartUrl + '/getPoslovniPartneri');
 
-  addPoslovniPart(poslovniPartner: PoslovniPartner): Observable<PoslovniPartner> {
-    return this.http.post<PoslovniPartner>(this.poslovniPartUrl, poslovniPartner, httpOptions);
-  }
-
-  getPoslovniPartneri(): Observable<PoslovniPartner[]> {
-    return this.http.get<PoslovniPartner[]>(this.poslovniPartUrl + '/getPoslovniPartneri');
-
-  }
+}
 
 
 // poslovni partner - kraj
-
 // poslovna godina - pocetak
 
-  addPoslovnaGodina(poslovnaGodina: PoslovnaGodina): Observable<PoslovnaGodina> {
-    return this.http.post<PoslovnaGodina>(this.poslovnaGodinaUrl, poslovnaGodina, httpOptions);
-  }
 
-  getPoslovneGodine(): Observable<PoslovnaGodina[]> {
-    return this.http.get<PoslovnaGodina[]>(this.poslovnaGodinaUrl + '/getAll');
+getPoslovneGodine(): Observable<PoslovnaGodina[]> {
+  return this.http.get<PoslovnaGodina[]>(this.poslovnaGodinaUrl + '/getAll');
 
-  }
-
-// poslovna godina - kraj
+}
 
   constructor(private http: HttpClient) { }
 }
